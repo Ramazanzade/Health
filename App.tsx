@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import SplasScreen from './src/navigation/Stack/SplasStack/SplasScreen';
 import OnboardinScreen from './src/navigation/Stack/OnboardingStack/OnboardinScreen';
 import { store } from './src/store/store';
+import LoginScreen from './src/navigation/Stack/LoginStack/LoginScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -15,7 +16,9 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>   
       {/* <Stack.Screen name="SplasScreen" component={SplasScreen} />    */}
-      <Stack.Screen name="OnboardinScreen" component={OnboardinScreen} />   
+      <Stack.Screen name="OnboardinScreen" component={OnboardinScreen} /> 
+      <Stack.Screen name="LoginScreen" component={LoginScreen} />   
+  
       </Stack.Navigator>
     </NavigationContainer>
   );
