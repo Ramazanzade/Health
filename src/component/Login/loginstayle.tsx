@@ -1,6 +1,10 @@
 import { StyleSheet } from 'react-native'
 const colors = { primary: '#282534', white: '#ffff' }
 export default StyleSheet.create({
+    viewd: {
+        backgroundColor: '#FFFFFF',
+        flex: 1
+    },
     view: {
         display: 'flex',
         flexDirection: 'row',
@@ -22,7 +26,7 @@ export default StyleSheet.create({
         position: 'relative'
     },
     input: {
-        backgroundColor: '#E5E7EB',
+        backgroundColor: '#F2F2F2',
         borderWidth: 1,
         borderRadius: 30,
         borderColor: '#b7b8bc',
@@ -32,6 +36,20 @@ export default StyleSheet.create({
         textAlign: 'left',
         paddingLeft: 65,
         fontSize: 20
+    },
+    input1: {
+        backgroundColor: '#F2F2F2',
+        borderWidth: 1,
+        borderRadius: 30,
+        borderColor: '#b7b8bc',
+        padding: 20,
+        width: '90%',
+        marginHorizontal: '5%',
+        marginTop:'5%',
+        textAlign: 'left',
+        paddingLeft: 65,
+        fontSize: 20,
+        marginBottom:5
     },
     icon1: {
         position: 'absolute',
@@ -137,5 +155,66 @@ export default StyleSheet.create({
         borderRadius: 30,
         height: 65,
         marginTop: '5%'
+    },
+    modal: {
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF',
+        width: '80%',
+        borderRadius: 20,
+        height: '60%',
+        alignSelf: 'center',
+        marginTop: '40%'
+    },
+    view5: {
+        marginTop: '18%'
+    },
+    icon3: {
+        color: '#199A8E',
+        alignItems: 'center',
+        alignSelf: 'center',
+        marginTop: '25%'
+    },
+    iconview: {
+        width: 110,
+        height: 110,
+        borderRadius: 60,
+        backgroundColor: '#E5E7EB',
+
+    },
+    textview1: {
+        marginTop: '9%',
+        alignItems: 'center',
+    },
+    text7: {
+        fontSize: 20,
+        fontWeight: '600',
+        color: '#101623',
+    },
+    text8: {
+        width: 240,
+        marginTop: '5%',
+        paddingLeft: 20
+    },
+    toucview1: {
+        marginTop: '15%'
+    },
+    text9: {
+        color: '#ffffff',
+        fontSize: 20,
+        textAlign: 'center',
+        marginTop: '9%'
+    },
+    text10:{
+        width: 245,
+        marginTop: '5%',
+        paddingLeft: 20
+    },
+    touc3: {
+        backgroundColor: '#199A8E',
+        width: 170,
+        height: 60,
+        borderRadius: 20,
+        marginTop: '15%'
     }
+
 })

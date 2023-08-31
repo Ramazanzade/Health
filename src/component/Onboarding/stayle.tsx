@@ -99,7 +99,13 @@ export default StyleSheet.create({
     marginTop: '40%'
   },
   text3: {
-    color: '#ffffff',
+    color: '#000000',
+    fontSize: 20,
+    textAlign: 'center',
+    marginTop:'4%'
+  },
+  text5:{
+    color: '#FFFFFF',
     fontSize: 20,
     textAlign: 'center',
     marginTop:'4%'

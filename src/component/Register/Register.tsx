@@ -2,14 +2,18 @@ import { View, Text, TouchableOpacity, TextInput, Image, ActivityIndicator, Moda
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faEnvelope, faLock, faEye, faEyeSlash, faCheck } from '@fortawesome/free-solid-svg-icons';
-import loginstayle from './loginstayle';
-const Login = ({ navigation }: any) => {
+import { faUser } from '@fortawesome/free-regular-svg-icons';
+
+import loginstayle from '../Login/loginstayle';
+const Register = ({ navigation }: any) => {
     const [emai, setemail] = useState('')
     const [paswword, setpaswword] = useState('')
     const [hideNumbers, setHideNumbers] = useState(false);
     const [hideText, setHideText] = useState(true);
     const [loading, setLoading] = useState(false);
+    const [loading1, setLoading1] = useState(false);
     const [backgroundRed, setBackgroundRed] = useState(false);
+    const [name, setname] = useState('')
 
     const handleToggleHideNumbers = () => {
         setHideNumbers(!hideNumbers);
@@ -28,8 +32,15 @@ const Login = ({ navigation }: any) => {
 
 
     const closeSuccessModal = () => {
-        setSuccessModalVisible(false);
-        setBackgroundRed(false)
+        setLoading1(true);
+        setTimeout(() => {
+          setSuccessModalVisible(false);
+        setBackgroundRed(false)  
+        navigation.navigate('LoginScreen')
+ 
+        }, 1000);
+       
+
     };
 
     return (
@@ -38,16 +49,27 @@ const Login = ({ navigation }: any) => {
                 <TouchableOpacity onPress={() => navigation.navigate('OnboardinScreen', { screen: 'Onboarding2' })}>
                     <FontAwesomeIcon icon={faChevronLeft} style={loginstayle.icon} size={25} />
                 </TouchableOpacity>
-                <Text style={loginstayle.text}>Login</Text>
+                <Text style={loginstayle.text}>Sign Up</Text>
             </View>
             <View style={loginstayle.inputview}>
-                <FontAwesomeIcon icon={faEnvelope} style={loginstayle.icon1} size={25} />
-                <TextInput
-                    onChangeText={setemail}
-                    value={emai}
-                    placeholder='Enter your email'
-                    style={loginstayle.input}
-                />
+                <View>
+                    <FontAwesomeIcon icon={faUser} style={loginstayle.icon1} size={25} />
+                    <TextInput
+                        onChangeText={setname}
+                        value={name}
+                        placeholder='Enter your name'
+                        style={loginstayle.input1}
+                    />
+                </View>
+                <View>
+                    <FontAwesomeIcon icon={faEnvelope} style={loginstayle.icon1} size={25} />
+                    <TextInput
+                        onChangeText={setemail}
+                        value={emai}
+                        placeholder='Enter your email'
+                        style={loginstayle.input1}
+                    />
+                </View>
                 <View>
                     <FontAwesomeIcon icon={faLock} style={loginstayle.icon1} size={25} />
                     <TouchableOpacity onPress={handleToggleHideNumbers} style={loginstayle.toucicon}>
@@ -60,7 +82,7 @@ const Login = ({ navigation }: any) => {
                         onChangeText={setpaswword}
                         value={hideText ? paswword.replace(/./g, '*') : paswword}
                         placeholder='Enter your password'
-                        style={loginstayle.input}
+                        style={loginstayle.input1}
                     />
                     <TouchableOpacity style={loginstayle.touc} >
                         <Text style={loginstayle.text1}>Forgot Password?</Text>
@@ -72,7 +94,7 @@ const Login = ({ navigation }: any) => {
                     {loading ? (
                         <ActivityIndicator size='large' color="white" style={{ marginTop: '4%' }} />
                     ) : (
-                        <Text style={loginstayle.text2}>Login</Text>
+                        <Text style={loginstayle.text2}>Sign Up</Text>
                     )}
                 </TouchableOpacity>
                 <Modal
@@ -87,20 +109,23 @@ const Login = ({ navigation }: any) => {
                             </View>
                         </View>
                         <View style={loginstayle.textview1}>
-                            <Text style={loginstayle.text7}>Yeay! Welcome Back</Text>
-                            <Text style={loginstayle.text8}>Once again you login successfully into medidoc app</Text>
+                            <Text style={loginstayle.text7}>Success</Text>
+                            <Text style={loginstayle.text10}>Your account has been successfully registered</Text>
                         </View>
                         <View style={loginstayle.toucview1}>
                             <TouchableOpacity style={loginstayle.touc3} onPress={closeSuccessModal}>
-                                <Text style={loginstayle.text9}>Go to home</Text>
+                                {loading1 ? (
+                                    <ActivityIndicator size='small' color="white" style={{ marginTop: '10%' }} />
+                                ) : (
+                                    <Text style={loginstayle.text9}>Login</Text>)}
                             </TouchableOpacity>
                         </View>
                     </View>
                 </Modal>
                 <View style={loginstayle.textview}>
                     <Text style={loginstayle.text4}>Don’t have an account?</Text>
-                    <TouchableOpacity onPress={()=>navigation.navigate('RegisterScreen')}>
-                        <Text style={loginstayle.text3}>Sign Up</Text>
+                    <TouchableOpacity onPress={()=>navigation.navigate('LoginScreen')}>
+                        <Text style={loginstayle.text3}>Login</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -136,4 +161,4 @@ const Login = ({ navigation }: any) => {
     )
 }
 
-export default Login
+export default Register
