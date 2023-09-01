@@ -4,13 +4,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faEnvelope, faLock, faEye, faEyeSlash, faCheck } from '@fortawesome/free-solid-svg-icons';
 import loginstayle from './loginstayle';
 const Login = ({ navigation }: any) => {
-    const [emai, setemail] = useState('')
-    const [paswword, setpaswword] = useState('')
+    const [email, setemail] = useState<any>('')
+    const [paswword, setpaswword] = useState<any>('')
+    const [emaierror, seteamilerror] = useState(false)
+    const [paswworderror, setpaswworderror] = useState(false)
     const [hideNumbers, setHideNumbers] = useState(false);
     const [hideText, setHideText] = useState(true);
     const [loading, setLoading] = useState(false);
     const [backgroundRed, setBackgroundRed] = useState(false);
+    const [hasContent1, setHasContent1] = useState<any>(false); 
+    const [hasContent2, setHasContent2] = useState<any>(false); 
 
+    const handlePasswordChange = (text: string) => {
+        setpaswword(text);
+        setpaswworderror(text.trim() === '')
+        setHasContent2(text.trim() !== ''); 
+
+    };
+    const handleEmailChange = (text: string) => {
+        setemail(text);
+        seteamilerror(text.trim() === '' || !/\S+@\S+\.\S+/.test(text))
+        setHasContent1(text.trim() !== '');
+
+    };
     const handleToggleHideNumbers = () => {
         setHideNumbers(!hideNumbers);
         setHideText(!hideText);
@@ -18,12 +34,18 @@ const Login = ({ navigation }: any) => {
     const [successModalVisible, setSuccessModalVisible] = useState(false);
 
     const handleLogin = () => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-            setBackgroundRed(true);
-            setSuccessModalVisible(true);
-        }, 1000);
+        if ( emaierror == email || paswworderror == paswword) {
+            seteamilerror(true)
+            setpaswworderror(true)
+
+        } else {
+            setLoading(true);
+            setTimeout(() => {
+                setLoading(false);
+                setBackgroundRed(true);
+                setSuccessModalVisible(true);
+            }, 2000);
+        }
     };
 
 
@@ -41,28 +63,28 @@ const Login = ({ navigation }: any) => {
                 <Text style={loginstayle.text}>Login</Text>
             </View>
             <View style={loginstayle.inputview}>
-                <FontAwesomeIcon icon={faEnvelope} style={loginstayle.icon1} size={25} />
-                <TextInput
-                    onChangeText={setemail}
-                    value={emai}
-                    placeholder='Enter your email'
-                    style={loginstayle.input}
-                />
+            <FontAwesomeIcon icon={faEnvelope} style={[loginstayle.icon1, hasContent1 && { color: '#199A8E' } ]} size={25} />
+                    <TextInput
+                        onChangeText={handleEmailChange}
+                        value={email}
+                        placeholder='Enter your email'
+                        style={[loginstayle.input1, emaierror && { borderColor: 'red' }]}
+                    />
                 <View>
-                    <FontAwesomeIcon icon={faLock} style={loginstayle.icon1} size={25} />
+                <FontAwesomeIcon icon={faLock} style={[loginstayle.icon1, hasContent2 && { color: '#199A8E' } ]} size={25} />
                     <TouchableOpacity onPress={handleToggleHideNumbers} style={loginstayle.toucicon}>
                         {hideNumbers
-                            ? <FontAwesomeIcon icon={faEye} style={loginstayle.icon1} size={25} />
-                            : <FontAwesomeIcon icon={faEyeSlash} style={loginstayle.icon1} size={25} />
+                            ? <FontAwesomeIcon icon={faEye} style={[loginstayle.icon1, hasContent2 && { color: '#199A8E' }]} size={25} />
+                            : <FontAwesomeIcon icon={faEyeSlash} style={[loginstayle.icon1, hasContent2 && { color: '#199A8E' }]} size={25} />
                         }
                     </TouchableOpacity>
                     <TextInput
-                        onChangeText={setpaswword}
+                        onChangeText={handlePasswordChange}
                         value={hideText ? paswword.replace(/./g, '*') : paswword}
                         placeholder='Enter your password'
-                        style={loginstayle.input}
+                        style={[loginstayle.input1, paswworderror && { borderColor: 'red' }]}
                     />
-                    <TouchableOpacity style={loginstayle.touc} >
+                    <TouchableOpacity style={loginstayle.touc} onPress={()=>navigation.navigate('Forgot')}>
                         <Text style={loginstayle.text1}>Forgot Password?</Text>
                     </TouchableOpacity>
                 </View>

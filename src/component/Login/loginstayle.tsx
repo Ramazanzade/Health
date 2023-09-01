@@ -45,11 +45,11 @@ export default StyleSheet.create({
         padding: 20,
         width: '90%',
         marginHorizontal: '5%',
-        marginTop:'5%',
+        marginTop: '5%',
         textAlign: 'left',
         paddingLeft: 65,
         fontSize: 20,
-        marginBottom:5
+        marginBottom: 5
     },
     icon1: {
         position: 'absolute',
@@ -70,6 +70,16 @@ export default StyleSheet.create({
     },
     touc: {
         marginRight: '7%'
+    },
+    touc9: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignSelf:'center'
+    },
+    text11: {
+        width: '70%',
+        marginTop:'3%',
+        
     },
     toucview: {
 
@@ -154,7 +164,18 @@ export default StyleSheet.create({
         marginHorizontal: '5%',
         borderRadius: 30,
         height: 65,
-        marginTop: '5%'
+        marginTop: '7%'
+    },
+    touc10:{
+        display: 'flex',
+        flexDirection: 'row',
+        borderColor: '#b7b8bc',
+        borderWidth: 1,
+        width: '90%',
+        marginHorizontal: '5%',
+        borderRadius: 30,
+        height: 65,
+        marginTop: '2%'
     },
     modal: {
         alignItems: 'center',
@@ -204,7 +225,7 @@ export default StyleSheet.create({
         textAlign: 'center',
         marginTop: '9%'
     },
-    text10:{
+    text10: {
         width: 245,
         marginTop: '5%',
         paddingLeft: 20
@@ -215,6 +236,15 @@ export default StyleSheet.create({
         height: 60,
         borderRadius: 20,
         marginTop: '15%'
+    },
+    checkbox: {
+        width: 50,
+        height: 50,
+        borderRadius: 20,
+        borderWidth: 10
+    },
+    text12:{
+        color:'#199A8E'
     }
 
 })
