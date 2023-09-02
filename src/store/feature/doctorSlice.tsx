@@ -4,7 +4,7 @@ const initialStateValue = [
         id: 1,
         category: 'General',
         detail: {
-            name: 'Dr. Marcus Horizon',
+            name: 'Dr. Marcus ',
             about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam... ',
             loction: '800m away',
             star: '4.7',
@@ -15,7 +15,7 @@ const initialStateValue = [
     },
     {
         id: 2,
-        category: 'Lungs Specialist',
+        category: 'Specialist',
         detail: {
             name: 'Dr. Maria',
             about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam... ',
