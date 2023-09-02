@@ -1,21 +1,45 @@
-import { View, TouchableOpacity, Text, TextInput } from 'react-native'
-import React, { useRef, useState } from 'react'
+import { View, TouchableOpacity, Text, TextInput, ActivityIndicator } from 'react-native';
+import React, { useRef, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import forgotcss from './forgotcss';
+
 const Verify = ({ navigation }: any) => {
-    const [color, setcolor] = useState(false)
-    const [verif , setverif]=useState<any>('')
+    const [veriferror, setveriferror] = useState<any>(false);
+    const [verif, setverif] = useState<string[]>(['', '', '', '']);
+    const [loading, setLoading] = useState(false);
+    const [hasContent, setHasContent] = useState<boolean[]>([false, false, false, false]);
 
-    const handleerror =(text:any)=>{
-        setverif(text);
-        setcolor(text.trim() === '' )
-    }
-    const inputRefs = Array.from({ length: 4 }, () => useRef<any>(null));
+    const inputRefs = Array.from({ length: 4 }, () => useRef<TextInput>(null));
 
-    const focusNextInput = (index: any) => {
-        if (index < inputRefs.length - 1) {
-            inputRefs[index + 1].current.focus();
+    useEffect(() => {
+        if (hasContent.every((content) => content)) {
+            Verify1();
+        }
+    }, [hasContent]);
+
+    const handleInputChange = (text: string, index: number) => {
+        const updatedVerif = [...verif];
+        updatedVerif[index] = text;
+        setverif(updatedVerif);
+        const updatedHasContent = [...hasContent];
+        updatedHasContent[index] = text.length > 0;
+        setHasContent(updatedHasContent);
+
+        if (text.length === 1 && index < inputRefs.length - 1) {
+            inputRefs[index + 1].current?.focus();
+        }
+    };
+
+    const Verify1 = () => {
+        if (veriferror == verif.join('')) {
+            setveriferror(true);
+        } else {
+            setLoading(true);
+            setTimeout(() => {
+                setLoading(false);
+                navigation.navigate('CreatNewPassword')
+            }, 2000);
         }
     };
 
@@ -35,30 +59,35 @@ const Verify = ({ navigation }: any) => {
                     <TextInput
                         key={index}
                         ref={ref}
-                        style={forgotcss.input}
-                        keyboardType='numeric'
+                        style={[
+                            forgotcss.input,
+                            veriferror && { borderColor: 'red' },
+                            hasContent[index] && { borderColor: '#199A8E' },
+                        ]}
+                        keyboardType="numeric"
                         maxLength={1}
-                        onChangeText={(text) => {
-                            if (text.length === 1) {
-                                focusNextInput(index);
-                            }
-                        }}
-                        onSubmitEditing={() => {
-                            if (index < inputRefs.length - 1) {
-                                focusNextInput(index);
-                            }
-                        }}
-                        value={verif}
-                        
+                        onChangeText={(text) => handleInputChange(text, index)}
+                        value={verif[index]}
                     />
                 ))}
             </View>
-            <View></View>
-            <View></View>
-
-
+            <View style={forgotcss.toucv}>
+                <TouchableOpacity style={[forgotcss.touc, { width: '90%', marginHorizontal: '5%' }]} onPress={Verify1}>
+                    {loading ? (
+                        <ActivityIndicator size="large" color="white" style={{ marginTop: '4%' }} />
+                    ) : (
+                        <Text style={forgotcss.text3}>Verify</Text>
+                    )}
+                </TouchableOpacity>
+            </View>
+            <View style={forgotcss.textview2}>
+                <Text style={forgotcss.text4}>Didn’t receive the code?</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Forgot')}>
+                    <Text style={forgotcss.text5}>Resend</Text>
+                </TouchableOpacity>
+            </View>
         </View>
-    )
-}
+    );
+};
 
-export default Verify
+export default Verify;

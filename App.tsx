@@ -8,6 +8,7 @@ import OnboardinScreen from './src/navigation/Stack/OnboardingStack/OnboardinScr
 import { store } from './src/store/store';
 import LoginScreen from './src/navigation/Stack/LoginStack/LoginScreen';
 import RegisterScreen from './src/navigation/Stack/RegisterStack/RegisterScreen';
+import Tabbar from './src/navigation/Tabbar/Tabbar';
 
 
 const Stack = createNativeStackNavigator();
@@ -19,8 +20,8 @@ const App = () => {
       {/* <Stack.Screen name="SplasScreen" component={SplasScreen} />    */}
       <Stack.Screen name="OnboardinScreen" component={OnboardinScreen} /> 
       <Stack.Screen name="LoginScreen" component={LoginScreen} />   
-      <Stack.Screen name="RegisterScreen" component={RegisterScreen} />   
-  
+      <Stack.Screen name="RegisterScreen" component={RegisterScreen} />  
+      <Stack.Screen name="Tabbar" component={Tabbar} />  
       </Stack.Navigator>
     </NavigationContainer>
   );

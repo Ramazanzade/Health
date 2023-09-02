@@ -8,17 +8,17 @@ const Login = ({ navigation }: any) => {
     const [paswword, setpaswword] = useState<any>('')
     const [emaierror, seteamilerror] = useState(false)
     const [paswworderror, setpaswworderror] = useState(false)
-    const [hideNumbers, setHideNumbers] = useState(false);
-    const [hideText, setHideText] = useState(true);
+    const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
     const [loading, setLoading] = useState(false);
     const [backgroundRed, setBackgroundRed] = useState(false);
-    const [hasContent1, setHasContent1] = useState<any>(false); 
-    const [hasContent2, setHasContent2] = useState<any>(false); 
+    const [hasContent1, setHasContent1] = useState<any>(false);
+    const [hasContent2, setHasContent2] = useState<any>(false);
+    const [loading1, setLoading1] = useState(false);
 
     const handlePasswordChange = (text: string) => {
         setpaswword(text);
         setpaswworderror(text.trim() === '')
-        setHasContent2(text.trim() !== ''); 
+        setHasContent2(text.trim() !== '');
 
     };
     const handleEmailChange = (text: string) => {
@@ -27,14 +27,13 @@ const Login = ({ navigation }: any) => {
         setHasContent1(text.trim() !== '');
 
     };
-    const handleToggleHideNumbers = () => {
-        setHideNumbers(!hideNumbers);
-        setHideText(!hideText);
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
     };
     const [successModalVisible, setSuccessModalVisible] = useState(false);
 
     const handleLogin = () => {
-        if ( emaierror == email || paswworderror == paswword) {
+        if (emaierror == email || paswworderror == paswword) {
             seteamilerror(true)
             setpaswworderror(true)
 
@@ -50,8 +49,12 @@ const Login = ({ navigation }: any) => {
 
 
     const closeSuccessModal = () => {
-        setSuccessModalVisible(false);
-        setBackgroundRed(false)
+        setLoading1(true);
+        setTimeout(() => {
+            setSuccessModalVisible(false);
+            setBackgroundRed(false)
+            navigation.navigate('Tabbar', { screen: 'HomeScreen' })
+        }, 2000);
     };
 
     return (
@@ -63,28 +66,29 @@ const Login = ({ navigation }: any) => {
                 <Text style={loginstayle.text}>Login</Text>
             </View>
             <View style={loginstayle.inputview}>
-            <FontAwesomeIcon icon={faEnvelope} style={[loginstayle.icon1, hasContent1 && { color: '#199A8E' } ]} size={25} />
-                    <TextInput
-                        onChangeText={handleEmailChange}
-                        value={email}
-                        placeholder='Enter your email'
-                        style={[loginstayle.input1, emaierror && { borderColor: 'red' }]}
-                    />
+                <FontAwesomeIcon icon={faEnvelope} style={[loginstayle.icon1, hasContent1 && { color: '#199A8E' }]} size={25} />
+                <TextInput
+                    onChangeText={handleEmailChange}
+                    value={email}
+                    placeholder='Enter your email'
+                    style={[loginstayle.input1, emaierror && { borderColor: 'red' }]}
+                />
                 <View>
-                <FontAwesomeIcon icon={faLock} style={[loginstayle.icon1, hasContent2 && { color: '#199A8E' } ]} size={25} />
-                    <TouchableOpacity onPress={handleToggleHideNumbers} style={loginstayle.toucicon}>
-                        {hideNumbers
+                    <FontAwesomeIcon icon={faLock} style={[loginstayle.icon1, hasContent2 && { color: '#199A8E' }]} size={25} />
+                    <TouchableOpacity onPress={togglePasswordVisibility} style={loginstayle.toucicon}>
+                        {passwordVisible
                             ? <FontAwesomeIcon icon={faEye} style={[loginstayle.icon1, hasContent2 && { color: '#199A8E' }]} size={25} />
                             : <FontAwesomeIcon icon={faEyeSlash} style={[loginstayle.icon1, hasContent2 && { color: '#199A8E' }]} size={25} />
                         }
                     </TouchableOpacity>
                     <TextInput
                         onChangeText={handlePasswordChange}
-                        value={hideText ? paswword.replace(/./g, '*') : paswword}
+                        value={paswword}
                         placeholder='Enter your password'
+                        secureTextEntry={!passwordVisible}
                         style={[loginstayle.input1, paswworderror && { borderColor: 'red' }]}
                     />
-                    <TouchableOpacity style={loginstayle.touc} onPress={()=>navigation.navigate('Forgot')}>
+                    <TouchableOpacity style={loginstayle.touc} onPress={() => navigation.navigate('Forgot')}>
                         <Text style={loginstayle.text1}>Forgot Password?</Text>
                     </TouchableOpacity>
                 </View>
@@ -114,14 +118,17 @@ const Login = ({ navigation }: any) => {
                         </View>
                         <View style={loginstayle.toucview1}>
                             <TouchableOpacity style={loginstayle.touc3} onPress={closeSuccessModal}>
-                                <Text style={loginstayle.text9}>Go to home</Text>
+                                {loading1 ? (
+                                    <ActivityIndicator size='small' color="white" style={{ marginTop: '10%' }} />
+                                ) : (<Text style={loginstayle.text9}>Go to home</Text>)}
+
                             </TouchableOpacity>
                         </View>
                     </View>
                 </Modal>
                 <View style={loginstayle.textview}>
                     <Text style={loginstayle.text4}>Don’t have an account?</Text>
-                    <TouchableOpacity onPress={()=>navigation.navigate('RegisterScreen')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
                         <Text style={loginstayle.text3}>Sign Up</Text>
                     </TouchableOpacity>
                 </View>

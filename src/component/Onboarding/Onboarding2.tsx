@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 import stayle from './stayle'
 
 const Onboarding2 = ({ navigation }: any) => {
-  const [loading, setloading] = useState(false)
+  const [loading3, setloading3] = useState(false)
   const [loading1, setloading1] = useState(false)
 
   const handele = () => {
-    setloading(true)
+    setloading3(true)
     setTimeout(() => {
-      setloading(false)
+      setloading3(false)
       navigation.navigate('LoginScreen')
     }, 2000)
   }
@@ -35,8 +35,8 @@ const Onboarding2 = ({ navigation }: any) => {
 
       </View>
       <View style={stayle.view4}>
-        <TouchableOpacity style={stayle.touc} onPress={handele} disabled={loading}>
-          {loading ? (
+        <TouchableOpacity style={stayle.touc} onPress={handele} disabled={loading3}>
+          {loading3 ? (
              <ActivityIndicator size='small' color="white" style={{marginTop:'7%'}} />
           ): (
            <Text style = {stayle.text5}> Login</Text> 

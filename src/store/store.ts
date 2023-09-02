@@ -1,8 +1,11 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { OnboardingReducer } from "./feature/onboardingslice";
-
+import {doctorReducer} from './feature/doctorSlice'
+import { reclamReducer } from "./feature/rekalamSlice";
 const rootReducers = combineReducers({
-    OnboardingReducer
+    OnboardingReducer,
+    doctorReducer,
+    reclamReducer
 })
 
 export const store = configureStore({

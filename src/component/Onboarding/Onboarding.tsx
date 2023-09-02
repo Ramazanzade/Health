@@ -55,7 +55,7 @@ const Onboarding = ({ navigation }: any) => {
                     style={stayle.nextButton}
                     onPress={onNextPress}
                 >
-                    <FontAwesomeIcon icon={faArrowRight} style={stayle.icon} size={35} />
+               <FontAwesomeIcon icon={faArrowRight} style={stayle.icon} size={35} />
                 </TouchableOpacity>
             </View>
         </View>

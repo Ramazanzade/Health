@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
     iconview: {
-        margin: '7%',
+        margin: '5%',
         marginTop: '9%'
     },
     icon: {
@@ -13,7 +13,8 @@ export default StyleSheet.create({
         fontWeight: '500'
     },
     textview: {
-        marginLeft: '7%'
+        marginLeft: '9%',
+        marginTop:'5%'
     },
     text2: {
         marginTop: '3%',
@@ -65,7 +66,8 @@ export default StyleSheet.create({
     inputview: {
         display: 'flex',
         flexDirection: 'row',
-        marginVertical: '10%'
+        marginVertical: '10%',
+        alignSelf: 'center'
     },
     input: {
         width: 80,
@@ -73,7 +75,23 @@ export default StyleSheet.create({
         backgroundColor: '#b7b8bc',
         borderRadius: 20,
         fontSize: 30,
-        paddingLeft:30,
-        margin:10
+        paddingLeft: 30,
+        margin: 10,
+        borderWidth:1,
+        borderColor:'#b7b8bc'
+    },
+    textview2: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignSelf:'center',
+        marginTop:'7%'
+    },
+    text4: {
+        fontSize: 17
+    },
+    text5: {
+        color: '#199A8E',
+        fontSize: 17,
+        marginLeft:'10%'
     }
 })
