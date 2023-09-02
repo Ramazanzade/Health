@@ -2,10 +2,10 @@ import { View, Text, TouchableOpacity, TextInput, Image, FlatList } from 'react-
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBell, faNewspaper } from '@fortawesome/free-regular-svg-icons';
-import { faMagnifyingGlass, faStethoscope, faKitMedical, faTruckMedical, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faStethoscope, faKitMedical, faTruckMedical, faStar, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import homecss from './homecss';
 import { useSelector } from 'react-redux';
-const Home = () => {
+const Home = ({navigation}:any) => {
     const [search, setsearch] = useState('')
     const item = useSelector((state: any) => state.reclamReducer.value)
     const data = useSelector((state: any) => state.doctorReducer.value)
@@ -47,7 +47,7 @@ const Home = () => {
                         <Text style={homecss.text7}>{data.detail.star}</Text>
                     </View>
                     <View style={homecss.view9}>
-                        <FontAwesomeIcon icon={faStar} style={homecss.icon5} size={10} />
+                        <FontAwesomeIcon icon={faLocationDot} style={homecss.icon5} size={10} />
                         <Text style={homecss.text8}>{data.detail.loction}</Text>
                     </View>
                 </View>
@@ -107,6 +107,12 @@ const Home = () => {
                 />
             </View>
             <View>
+                <View style={homecss.view10}>
+                    <Text style={homecss.text9}>Top Doctor</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('DoctorScreen', { screen: 'TopDoctor' })}>
+                        <Text style={homecss.text10}> See all</Text>
+                    </TouchableOpacity>
+                </View>
                 <FlatList
                     data={data}
                     renderItem={({ item }) => renderItem(item)}

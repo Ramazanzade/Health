@@ -112,16 +112,16 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderRadius: 20,
         width: 180,
-        marginHorizontal:30,
-        marginTop:15,
-        borderColor:'#b7b8bc'
+        marginHorizontal: 30,
+        marginTop: 15,
+        borderColor: '#b7b8bc'
 
     },
     view5: {
 
     },
     view6: {
-        marginLeft: 25,
+        marginLeft: 35,
         marginTop: 5
     },
     view7: {
@@ -179,6 +179,22 @@ export default StyleSheet.create({
         marginTop: '5%',
         marginRight: '5%',
         color: '#ADADAD'
+    },
+    view10: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: '6%'
+    },
+    text9: {
+        fontSize: 20,
+        fontWeight: '500',
+        color: '#101623'
+    },
+    text10: {
+        color: '#199A8E',
+        marginTop: '20%',
+        fontSize: 15,
     }
 
 })

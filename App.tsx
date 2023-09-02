@@ -9,6 +9,7 @@ import { store } from './src/store/store';
 import LoginScreen from './src/navigation/Stack/LoginStack/LoginScreen';
 import RegisterScreen from './src/navigation/Stack/RegisterStack/RegisterScreen';
 import Tabbar from './src/navigation/Tabbar/Tabbar';
+import DoctorScreen from './src/navigation/Stack/DoctorStack/DoctorScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -22,6 +23,7 @@ const App = () => {
       <Stack.Screen name="LoginScreen" component={LoginScreen} />   
       <Stack.Screen name="RegisterScreen" component={RegisterScreen} />   */}
       <Stack.Screen name="Tabbar" component={Tabbar} />  
+      <Stack.Screen name="DoctorScreen" component={DoctorScreen} />  
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -5,7 +5,7 @@ const initialStateValue = [
         category: 'General',
         detail: {
             name: 'Dr. Marcus ',
-            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam... ',
+            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...hjasdnakjd asjhbxajskx  sa xjashnxiajk xajsbxajkx ajsbxiuajkhnx xajshnjak ',
             loction: '800m away',
             star: '4.7',
             imge: require('../../asset/imge/21.png'),
@@ -18,7 +18,7 @@ const initialStateValue = [
         category: 'Specialist',
         detail: {
             name: 'Dr. Maria',
-            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam... ',
+            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...hjasdnakjd asjhbxajskx  sa xjashnxiajk xajsbxajkx ajsbxiuajkhnx xajshnjak ',
             loction: '700m away',
             star: '3.7',
             imge: require('../../asset/imge/22.png'),
@@ -31,7 +31,7 @@ const initialStateValue = [
         category: 'Dentist',
         detail: {
             name: 'Dr. Stevi',
-            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam... ',
+            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...hjasdnakjd asjhbxajskx  sa xjashnxiajk xajsbxajkx ajsbxiuajkhnx xajshnjak ',
             loction: '1.5km away',
             star: '4.9',
             imge: require('../../asset/imge/23.png'),
@@ -44,7 +44,7 @@ const initialStateValue = [
         category: 'Psychiatrist',
         detail: {
             name: 'Dr. Marcunds',
-            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam... ',
+            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...hjasdnakjd asjhbxajskx  sa xjashnxiajk xajsbxajkx ajsbxiuajkhnx xajshnjak ',
             loction: '100m away',
             star: '3.5',
             imge: require('../../asset/imge/24.png'),
@@ -57,7 +57,7 @@ const initialStateValue = [
         category: 'Covid-19',
         detail: {
             name: 'Dr. Horizon',
-            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam... ',
+            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...hjasdnakjd asjhbxajskx  sa xjashnxiajk xajsbxajkx ajsbxiuajkhnx xajshnjak ',
             loction: '2.5km away',
             star: '4.2',
             imge: require('../../asset/imge/25.png'),
@@ -70,7 +70,7 @@ const initialStateValue = [
         category: 'Surgeon',
         detail: {
             name: 'Dr. Marit',
-            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam... ',
+            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...hjasdnakjd asjhbxajskx  sa xjashnxiajk xajsbxajkx ajsbxiuajkhnx xajshnjak ',
             loction: '700m away',
             star: '3.2',
             imge: require('../../asset/imge/21.png'),
@@ -83,7 +83,7 @@ const initialStateValue = [
         category: 'Cardiologist',
         detail: {
             name: 'Dr. Horizon',
-            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam... ',
+            about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...hjasdnakjd asjhbxajskx  sa xjashnxiajk xajsbxajkx ajsbxiuajkhnx xajshnjak ',
             loction: '5.5km away',
             star: '4.9',
             imge: require('../../asset/imge/22.png'),
