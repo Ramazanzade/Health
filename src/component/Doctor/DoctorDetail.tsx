@@ -1,10 +1,11 @@
 import { View, Text, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native'
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState , useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import doctorcss from './doctorcss'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
 import {faCommentDots } from '@fortawesome/free-regular-svg-icons';
+import { doctoraction } from '../../store/feature/doctorSlice';
 
 const DoctorDetail = ({ navigation }: any) => {
     const item = useSelector((state: any) => state.doctorReducer.value)
@@ -28,7 +29,6 @@ const DoctorDetail = ({ navigation }: any) => {
 
     const renderitem = (item: any) => {
         const isSelected = item.id === selectedId;
-
         return (
             <TouchableOpacity
                 style={[
@@ -45,7 +45,14 @@ const DoctorDetail = ({ navigation }: any) => {
     const handleItemClick = (itemId: any) => {
         setSelectedId(itemId);
     };
-    const handleclick=()=>{
+    const dispatch = useDispatch()
+    const [localData, setLocalData] = useState([]);
+    useEffect(() => {
+        dispatch(doctoraction(item));
+        setLocalData(item)
+    }, []);
+    const handleclick=(item: any)=>{
+        dispatch(doctoraction(item));
         navigation.navigate('Appointment')
     }
 
