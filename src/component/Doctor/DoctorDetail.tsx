@@ -11,6 +11,16 @@ const DoctorDetail = ({ navigation }: any) => {
     const toggleText = () => {
         setShowFullText(!showFullText);
     };
+
+    const currentDate = new Date();
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const currentMonth = currentDate.toLocaleString('default', { month: 'long' });
+    const daysOfWeek = [];
+
+    for (let i = 0; i < 7; i++) {
+        const dayOfMonth = currentDate.getDate() + i;
+        daysOfWeek.push(`${dayNames[i]}: ${dayOfMonth}`);
+    }
     return (
         <View>
             <View style={doctorcss.view}>
@@ -49,10 +59,15 @@ const DoctorDetail = ({ navigation }: any) => {
                     {showFullText ? item.detail.about : item.detail.about.substring(0, 100)}
                     {!showFullText && item.detail.about.length > 100 && (
                         <Text style={doctorcss.readMore} onPress={toggleText}>
-                            Read more
+                            ... Read more
                         </Text>
                     )}
                 </Text>
+            </View>
+            <View>
+                <Text>Month: {currentMonth}</Text>
+                <Text>Week:</Text>
+                <Text>{daysOfWeek.join(', ')}</Text>
             </View>
         </View>
     )

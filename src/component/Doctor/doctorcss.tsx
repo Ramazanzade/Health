@@ -104,7 +104,8 @@ export default StyleSheet.create({
         color: '#101623',
         fontWeight: '500'
     },
-    readMore:{
-color:'green'
+    readMore: {
+        color: '#199A8E',
+        marginRight:'15%'
     }
 })
