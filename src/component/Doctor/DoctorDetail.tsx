@@ -1,26 +1,54 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import doctorcss from './doctorcss'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
+import {faCommentDots } from '@fortawesome/free-regular-svg-icons';
+
 const DoctorDetail = ({ navigation }: any) => {
     const item = useSelector((state: any) => state.doctorReducer.value)
     const [showFullText, setShowFullText] = useState(false);
-
+    const [selectedDay, setSelectedDay] = useState<any>(null);
+    const [selectedId, setSelectedId] = useState<any>(null);
+    const date = useSelector((state: any) => state.OclockReducer.value)
     const toggleText = () => {
         setShowFullText(!showFullText);
     };
 
     const currentDate = new Date();
-    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const currentMonth = currentDate.toLocaleString('default', { month: 'long' });
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const daysOfWeek = [];
 
     for (let i = 0; i < 7; i++) {
         const dayOfMonth = currentDate.getDate() + i;
-        daysOfWeek.push(`${dayNames[i]}: ${dayOfMonth}`);
+        daysOfWeek.push(`${dayNames[i]}        ${dayOfMonth}`);
+
     }
+
+    const renderitem = (item: any) => {
+        const isSelected = item.id === selectedId;
+
+        return (
+            <TouchableOpacity
+                style={[
+                    doctorcss.touch,
+                    { backgroundColor: isSelected ? '#199A8E' : 'white' },
+                ]}
+                onPress={() => handleItemClick(item.id)}
+            >
+                <Text style={doctorcss.text9}>{item.date}</Text>
+            </TouchableOpacity>
+        );
+    };
+
+    const handleItemClick = (itemId: any) => {
+        setSelectedId(itemId);
+    };
+    const handleclick=()=>{
+        navigation.navigate('Appointment')
+    }
+
     return (
         <View>
             <View style={doctorcss.view}>
@@ -64,10 +92,43 @@ const DoctorDetail = ({ navigation }: any) => {
                     )}
                 </Text>
             </View>
+            <ScrollView style={doctorcss.dateview} horizontal={true}>
+                {daysOfWeek.map((day, index) => (
+                    <TouchableOpacity
+                        key={index}
+                        style={[
+                            doctorcss.datetouc,
+                            selectedDay === index ? { backgroundColor: '#199A8E' } : null,
+                            index >= currentDate.getDay() ? null : { backgroundColor: 'red' }, // Red background for previous days
+
+                        ]}
+                        onPress={() => {
+                            if (index >= currentDate.getDay()) {
+                                setSelectedDay(index);
+                            }
+                        }}
+                    >
+                        <Text style={doctorcss.text5}>{day}</Text>
+                    </TouchableOpacity>
+                ))}
+            </ScrollView>
+            <View style={doctorcss.view8}></View>
             <View>
-                <Text>Month: {currentMonth}</Text>
-                <Text>Week:</Text>
-                <Text>{daysOfWeek.join(', ')}</Text>
+                <FlatList
+                    data={date}
+                    renderItem={({ item }) => renderitem(item)}
+                    keyExtractor={(item: any) => item.id.toString()}
+                    style={doctorcss.flatlist}
+                    numColumns={3}
+                />
+            </View>
+            <View style={doctorcss.view9}>
+                <TouchableOpacity style={doctorcss.touc1}>
+                    <FontAwesomeIcon icon={faCommentDots} style={doctorcss.icon1} size={35} />
+                </TouchableOpacity>
+                <TouchableOpacity style={doctorcss.touc2} onPress={handleclick}>
+                    <Text style={doctorcss.text10}>Book Apointment</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
