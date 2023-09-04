@@ -49,7 +49,6 @@ export default StyleSheet.create({
     touc: {
         width: 80,
         height: 80,
-        backgroundColor: '#D9D9D9',
         borderRadius: 15
     },
     text1: {
@@ -136,9 +135,11 @@ export default StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#E8F3F1',
         borderRadius: 10,
-        width: 40,
+        width: 50,
         marginTop: 10,
-        marginRight: 15
+        marginRight: 15,
+        marginBottom:'5%',
+        height:20
     },
     view9: {
         display: 'flex',
@@ -164,7 +165,8 @@ export default StyleSheet.create({
         color: '#ADADAD'
     },
     text7: {
-        color: '#199A8E'
+        color: '#199A8E',
+        
     },
     text8: {
         color: '#ADADAD'
@@ -173,7 +175,8 @@ export default StyleSheet.create({
     icon4: {
         color: '#199A8E',
         marginTop: '10%',
-        marginRight: '15%'
+        marginRight: '10%',
+        marginLeft:'10%'
     },
     icon5: {
         marginTop: '5%',

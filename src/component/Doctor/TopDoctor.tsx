@@ -32,8 +32,8 @@ const TopDoctor = ({ navigation }: any) => {
                         <Text style={doctorcss.text2}>{data.category}</Text>
                     </View>
                     <View style={doctorcss.view4}>
-                        <View style={doctorcss.view5}>
-                            <FontAwesomeIcon icon={faStar} style={doctorcss.icon4} size={20} />
+                        <View style={[doctorcss.view5, {width:'50%'}]}>
+                            <FontAwesomeIcon icon={faStar} style={[doctorcss.icon4, {marginLeft:'5%', marginRight:'-9%'}]} size={20} />
                             <Text style={doctorcss.text7}>{data.detail.star}</Text>
                         </View>
                         <View style={doctorcss.view6}>

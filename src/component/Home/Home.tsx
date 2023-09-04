@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBell, faNewspaper } from '@fortawesome/free-regular-svg-icons';
 import { faMagnifyingGlass, faStethoscope, faKitMedical, faTruckMedical, faStar, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import homecss from './homecss';
-import { useSelector , useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { doctoraction } from '../../store/feature/doctorSlice';
-const Home = ({navigation}:any) => {
+const Home = ({ navigation }: any) => {
     const [search, setsearch] = useState('')
     const item = useSelector((state: any) => state.reclamReducer.value)
     const data = useSelector((state: any) => state.doctorReducer.value)
@@ -35,13 +35,18 @@ const Home = ({navigation}:any) => {
         dispatch(doctoraction(data));
         setLocalData(data)
     }, []);
-    const handleprees =(data:any)=>{
+    const handleprees = (data: any) => {
         dispatch(doctoraction(data));
-        navigation.navigate('DoctorScreen',{screen:'DoctorDetail'})
+        navigation.navigate('DoctorScreen', { screen: 'DoctorDetail' })
     }
+    const handlefinde = (data:any) => {
+        dispatch(doctoraction(data));
+        navigation.navigate('DoctorScreen', { screen: 'FindDoctors' })
+    }
+
     const renderItem = (data: any) => {
         return (
-            <TouchableOpacity style={homecss.touc2} onPress={()=>handleprees(data)}>
+            <TouchableOpacity style={homecss.touc2} onPress={() => handleprees(data)}>
                 <View style={homecss.view5}>
                     <Image
                         source={data.detail.imge}
@@ -66,7 +71,7 @@ const Home = ({navigation}:any) => {
         )
     }
     return (
-        <View style={{backgroundColor:'#FFFFFF', flex:1}}>
+        <View style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
             <View style={homecss.view1}>
                 <Text style={homecss.text}>Find your desire healt solution</Text>
                 <TouchableOpacity>
@@ -84,7 +89,7 @@ const Home = ({navigation}:any) => {
             </View>
             <View style={homecss.toucview}>
                 <View>
-                    <TouchableOpacity style={homecss.touc}>
+                    <TouchableOpacity style={homecss.touc} onPress={() => handlefinde(data)}>
                         <FontAwesomeIcon icon={faStethoscope} style={homecss.icon3} size={40} />
                     </TouchableOpacity>
                     <Text style={homecss.text1}>Doctor</Text>

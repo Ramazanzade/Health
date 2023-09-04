@@ -156,8 +156,9 @@ export default StyleSheet.create({
         height: 50,
         backgroundColor: '#E8F3F1',
         borderRadius: 10,
-        marginTop: '3%',
-        marginLeft: '6%'
+        marginTop: '2%',
+        marginLeft: '6%',
+        marginBottom: '5%'
     },
     text10: {
         fontSize: 25,
@@ -181,7 +182,8 @@ export default StyleSheet.create({
     },
     icon1: {
         color: '#199A8E',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        marginTop: '15%'
     },
     view10: {
         display: 'flex',
@@ -237,7 +239,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginHorizontal: '5%',
-        marginTop:'3%'
+        marginTop: '3%'
 
     },
     view14: {
@@ -252,4 +254,47 @@ export default StyleSheet.create({
         fontSize: 20,
         color: '#101623',
     },
+    selectview: {
+        width: "90%",
+        alignSelf: 'center',
+        marginTop:'5%',
+    },
+    input:{
+        borderWidth:1,
+        borderColor: '#ADADAD',
+        borderRadius:10,
+        width:'90%',
+        alignSelf:'center',
+        paddingLeft:20
+    },
+    input1:{
+        borderWidth:1,
+        borderColor: '#ADADAD',
+        borderRadius:10,
+        width:'40%',
+        paddingLeft:20
+    },
+    view16:{
+        display:'flex',
+        flexDirection:'row',
+        justifyContent:'space-evenly',
+        marginTop:'3%'
+    },
+    view17:{
+        marginTop:'5%'
+    },
+    text17:{
+        color: '#A1A8B0',
+        fontSize:16
+    },
+    text18:{
+        fontSize:25,
+        color:'#101623'
+    },
+    text19:{
+        fontSize:30,
+        color: '#101623',
+        marginLeft:'5%',
+        marginTop:'5%'
+    }
 })
