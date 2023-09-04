@@ -1,10 +1,11 @@
 import { View, Text, TouchableOpacity, TextInput, Image, FlatList } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBell, faNewspaper } from '@fortawesome/free-regular-svg-icons';
 import { faMagnifyingGlass, faStethoscope, faKitMedical, faTruckMedical, faStar, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import homecss from './homecss';
-import { useSelector } from 'react-redux';
+import { useSelector , useDispatch} from 'react-redux';
+import { doctoraction } from '../../store/feature/doctorSlice';
 const Home = ({navigation}:any) => {
     const [search, setsearch] = useState('')
     const item = useSelector((state: any) => state.reclamReducer.value)
@@ -28,9 +29,19 @@ const Home = ({navigation}:any) => {
         )
     }
 
+    const dispatch = useDispatch()
+    const [localData, setLocalData] = useState([]);
+    useEffect(() => {
+        dispatch(doctoraction(data));
+        setLocalData(data)
+    }, []);
+    const handleprees =(data:any)=>{
+        dispatch(doctoraction(data));
+        navigation.navigate('DoctorScreen',{screen:'DoctorDetail'})
+    }
     const renderItem = (data: any) => {
         return (
-            <TouchableOpacity style={homecss.touc2}>
+            <TouchableOpacity style={homecss.touc2} onPress={()=>handleprees(data)}>
                 <View style={homecss.view5}>
                     <Image
                         source={data.detail.imge}

@@ -6,39 +6,39 @@ import doctorcss from './doctorcss';
 import { useSelector, useDispatch } from 'react-redux';
 import { doctoraction } from '../../store/feature/doctorSlice';
 const TopDoctor = ({ navigation }: any) => {
-    const item = useSelector((state: any) => state.doctorReducer.value)
+    const data = useSelector((state: any) => state.doctorReducer.value)
     const dispatch = useDispatch()
     const [localData, setLocalData] = useState([]);
     useEffect(() => {
-        dispatch(doctoraction(item));
-        setLocalData(item)
+        dispatch(doctoraction(data));
+        setLocalData(data)
     }, []);
-    const handlePress = (item: any) => {
-        dispatch(doctoraction(item));
+    const handlePress = (data: any) => {
+        dispatch(doctoraction(data));
         navigation.navigate('DoctorDetail')
       };
-    const renderitem = (item: any) => {
+    const renderitem = (data: any) => {
         return (
-            <TouchableOpacity style={doctorcss.touc} onPress={()=>handlePress(item)}>
+            <TouchableOpacity style={doctorcss.touc} onPress={()=>handlePress(data)}>
                 <View style={doctorcss.view1}>
                     <Image
-                        source={item.detail.imge}
+                        source={data.detail.imge}
                         style={doctorcss.img}
                     />
                 </View>
                 <View style={doctorcss.view2}>
                     <View style={doctorcss.view3}>
-                        <Text style={doctorcss.text1}>{item.detail.name}</Text>
-                        <Text style={doctorcss.text2}>{item.category}</Text>
+                        <Text style={doctorcss.text1}>{data.detail.name}</Text>
+                        <Text style={doctorcss.text2}>{data.category}</Text>
                     </View>
                     <View style={doctorcss.view4}>
                         <View style={doctorcss.view5}>
                             <FontAwesomeIcon icon={faStar} style={doctorcss.icon4} size={20} />
-                            <Text style={doctorcss.text7}>{item.detail.star}</Text>
+                            <Text style={doctorcss.text7}>{data.detail.star}</Text>
                         </View>
                         <View style={doctorcss.view6}>
                             <FontAwesomeIcon icon={faLocationDot} style={doctorcss.icon5} size={20} />
-                            <Text style={doctorcss.text8}>{item.detail.loction}</Text>
+                            <Text style={doctorcss.text8}>{data.detail.loction}</Text>
                         </View>
                     </View>
                 </View>
@@ -55,7 +55,7 @@ const TopDoctor = ({ navigation }: any) => {
                 <Text style={doctorcss.text}>Top Doctor</Text>
             </View>
             <FlatList
-                data={item}
+                data={data}
                 renderItem={({ item }) => renderitem(item)}
                 keyExtractor={(item: any) => item.id.toString()}
             />

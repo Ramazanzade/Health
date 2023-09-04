@@ -111,7 +111,7 @@ export default StyleSheet.create({
     dateview: {
         display: "flex",
         flexDirection: 'row',
-        marginTop: '5%'
+        marginTop: '1%'
     },
     datetouc: {
         borderWidth: 1,
@@ -182,6 +182,24 @@ export default StyleSheet.create({
     icon1: {
         color: '#199A8E',
         alignSelf: 'center'
+    },
+    view10: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        marginHorizontal:'4%',
+        marginTop:'3%'
+    },
+    text11: {
+        fontSize: 25,
+        fontWeight: '500',
+        color: '#101623',
+    },
+    text12: {
+        fontSize: 15,
+        color: '#ADADAD',
+        marginLeft:'6%',
+        marginTop:'15%'
     }
 
 })
