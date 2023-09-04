@@ -47,7 +47,7 @@ const TopDoctor = ({ navigation }: any) => {
     }
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{backgroundColor:'#FFFFFF', flex:1}}>
             <View style={doctorcss.view}>
                 <TouchableOpacity onPress={() => navigation.navigate('Tabbar', { screen: 'HomeScreen' })} >
                     <FontAwesomeIcon icon={faChevronLeft} style={doctorcss.icon} size={30} />

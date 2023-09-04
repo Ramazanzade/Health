@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import doctorcss from './doctorcss'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faChevronLeft, faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
-import { faCommentDots } from '@fortawesome/free-regular-svg-icons';
+import { faChevronLeft, faLocationDot, faStar} from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import { doctoraction } from '../../store/feature/doctorSlice';
 import { useRoute } from '@react-navigation/native';
 
@@ -12,15 +12,20 @@ const Appointment = ({ navigation }: any) => {
     const data = useSelector((state: any) => state.doctorReducer.value)
     const route = useRoute<any>();
     const { selectedDay, selectedTime } = route.params;
+    const price= data.detail.consultation
+    const free = 1
+    const total = free + price
+    // console.log(price);
+    
     return (
-        <View>
+        <View style={{backgroundColor:'#FFFFFF', flex:1}}>
             <View style={doctorcss.view}>
                 <TouchableOpacity onPress={() => navigation.navigate('DoctorDetail')} >
                     <FontAwesomeIcon icon={faChevronLeft} style={doctorcss.icon} size={30} />
                 </TouchableOpacity>
                 <Text style={doctorcss.text}>Appointment</Text>
             </View>
-            <View style={doctorcss.view7}>
+            <View style={[doctorcss.view7, {marginTop:'2%'}]}>
                 <View style={doctorcss.view1}>
                     <Image
                         source={data.detail.imge}
@@ -51,17 +56,53 @@ const Appointment = ({ navigation }: any) => {
                 </TouchableOpacity>
             </View>
 
-            <View>
-                <View>
-                    <FontAwesomeIcon icon={faChevronLeft} style={doctorcss.icon} size={30} />
+            <View style={doctorcss.view11}>
+                <View style={doctorcss.view12}>
+                <FontAwesomeIcon icon={faCalendarDays} style={doctorcss.icon2} size={30} />
                 </View>
-                <View>
-                    <Text>{selectedDay.dayOfMonth}</Text> 
-                    <Text>{selectedDay.month}</Text>
-                    <Text>{selectedDay.year}</Text>
-                    <Text>{selectedTime.toString()}</Text>
+                <View style={doctorcss.view13}>
+                    <Text style={doctorcss.text13}> {selectedDay.dayName}   {selectedDay.dayOfMonth}/{selectedDay.month}/{selectedDay.year}</Text> 
+                    <Text style={doctorcss.text14}>| {selectedTime.toString()}</Text>
                 </View>
             </View>
+            <View style={doctorcss.view8}></View>
+            <View style={doctorcss.view10}>
+                <Text style={doctorcss.text11}>Reason</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('FindDoctors')}>
+                    <Text style={doctorcss.text12}>Change</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={doctorcss.view11}>
+                <View style={doctorcss.view12}>
+                <FontAwesomeIcon icon={faPenToSquare} style={doctorcss.icon2} size={30} />
+                </View>
+                <View style={doctorcss.view13}>
+                    <Text style={[doctorcss.text13,{marginLeft:'15%'}]}>{data.category}</Text> 
+                </View>
+            </View>
+            <View style={doctorcss.view8}></View>
+            <View style={doctorcss.view10}>
+                <Text style={doctorcss.text11}>Payment Detail</Text>
+            </View>
+            <View style={doctorcss.view14}>
+                <View style={doctorcss.view15}>
+                    <Text style={doctorcss.text15}>Consultation</Text>
+                    <Text style={doctorcss.text16}>{data.detail.consultation}$</Text>
+                </View>
+                <View style={doctorcss.view15}>
+                    <Text style={doctorcss.text15}>Admin Fee</Text>
+                    <Text style={doctorcss.text16}>{free}$</Text>
+                </View>
+                <View style={doctorcss.view15}>
+                    <Text style={doctorcss.text15}>Aditional Discount</Text>
+                    <Text style={doctorcss.text16}> - </Text>
+                </View>
+                <View style={doctorcss.view15}>
+                    <Text style={[doctorcss.text15, {color:'#101623'}]}>Total</Text>
+                    <Text style={[doctorcss.text16,{color:'#199A8E', fontSize:25}]}>{total}$</Text>
+                </View>
+            </View>
+            <View style={doctorcss.view8}></View>
         </View>
     )
 }

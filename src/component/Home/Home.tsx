@@ -66,7 +66,7 @@ const Home = ({navigation}:any) => {
         )
     }
     return (
-        <View>
+        <View style={{backgroundColor:'#FFFFFF', flex:1}}>
             <View style={homecss.view1}>
                 <Text style={homecss.text}>Find your desire healt solution</Text>
                 <TouchableOpacity>

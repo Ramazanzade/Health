@@ -24,7 +24,7 @@ const DoctorDetail = ({ navigation }: any) => {
     const currentDayOfMonth = currentDate.getDate();
     const currentMonth = currentDate.getMonth(); 
     const currentYear = currentDate.getFullYear();
-    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const daysOfWeek: any = [];
     const months = [
         'January', 'February', 'March', 'April',
@@ -84,7 +84,7 @@ const DoctorDetail = ({ navigation }: any) => {
     }
 
     return (
-        <View>
+        <View style={{backgroundColor:'#FFFFFF', flex:1}}>
             <View style={doctorcss.view}>
                 <TouchableOpacity onPress={() => navigation.navigate('Tabbar', { screen: 'HomeScreen' })} >
                     <FontAwesomeIcon icon={faChevronLeft} style={doctorcss.icon} size={30} />
@@ -143,7 +143,7 @@ const DoctorDetail = ({ navigation }: any) => {
                         }}
                     >
                         <Text style={doctorcss.text5}>
-                            {dayInfo.dayName}       {dayInfo.dayOfMonth}  
+                            {dayInfo.dayName.slice(0, 3)}       {dayInfo.dayOfMonth}  
                         </Text>                   
                          </TouchableOpacity>
                 ))}

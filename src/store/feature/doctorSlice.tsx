@@ -9,7 +9,7 @@ const initialStateValue = [
             loction: '800m away',
             star: '4.7',
             imge: require('../../asset/imge/21.png'),
-            consultation: '60$'
+            consultation: 60
         },
 
     },
@@ -22,7 +22,7 @@ const initialStateValue = [
             loction: '700m away',
             star: '3.7',
             imge: require('../../asset/imge/22.png'),
-            consultation: '90$'
+            consultation: 90
         },
 
     },
@@ -35,7 +35,7 @@ const initialStateValue = [
             loction: '1.5km away',
             star: '4.9',
             imge: require('../../asset/imge/23.png'),
-            consultation: '100$'
+            consultation: 100
         },
 
     },
@@ -48,7 +48,7 @@ const initialStateValue = [
             loction: '100m away',
             star: '3.5',
             imge: require('../../asset/imge/24.png'),
-            consultation: '20$'
+            consultation: 20
         },
 
     },
@@ -61,7 +61,7 @@ const initialStateValue = [
             loction: '2.5km away',
             star: '4.2',
             imge: require('../../asset/imge/25.png'),
-            consultation: '99$'
+            consultation: 99
         },
 
     },
@@ -74,7 +74,7 @@ const initialStateValue = [
             loction: '700m away',
             star: '3.2',
             imge: require('../../asset/imge/21.png'),
-            consultation: '60$'
+            consultation: 60
         },
 
     }, 
@@ -87,7 +87,7 @@ const initialStateValue = [
             loction: '5.5km away',
             star: '4.9',
             imge: require('../../asset/imge/22.png'),
-            consultation: '90$'
+            consultation: 90
         },
 
     }

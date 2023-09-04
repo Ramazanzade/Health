@@ -128,9 +128,9 @@ export default StyleSheet.create({
 
     },
     view8: {
-        height: 2,
+        height: 1,
         backgroundColor: '#ADADAD',
-        marginTop: '3%',
+        marginTop: '2%',
         width: '96%',
         alignSelf: 'center'
     },
@@ -187,19 +187,69 @@ export default StyleSheet.create({
         display: 'flex',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        marginHorizontal:'4%',
-        marginTop:'3%'
+        marginHorizontal: '4%',
+        marginTop: '2%'
     },
     text11: {
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: '500',
         color: '#101623',
     },
     text12: {
         fontSize: 15,
         color: '#ADADAD',
-        marginLeft:'6%',
-        marginTop:'15%'
-    }
+        marginLeft: '6%',
+        marginTop: '15%'
+    },
+    view11: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginHorizontal: '4%',
+        marginTop: '2%'
+    },
+    view12: {
+        width: 55,
+        height: 55,
+        borderRadius: 35,
+        backgroundColor: '#E8F3F1'
+    },
+    view13: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginTop: '3%'
+    },
+    text13: {
+        fontSize: 20,
+        marginLeft: '2%'
+    },
+    text14: {
+        fontSize: 20,
+        marginLeft: '3%'
 
+    },
+    icon2: {
+        color: '#199A8E',
+        alignSelf: 'center',
+        marginTop: '20%'
+    },
+    view15: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: '5%',
+        marginTop:'3%'
+
+    },
+    view14: {
+        marginTop: '2%'
+    },
+    text15: {
+        fontSize: 20,
+        color: '#A1A8B0',
+
+    },
+    text16: {
+        fontSize: 20,
+        color: '#101623',
+    },
 })
