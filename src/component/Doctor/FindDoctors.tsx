@@ -6,33 +6,32 @@ import doctorcss from './doctorcss';
 import { useSelector, useDispatch } from 'react-redux';
 import { doctoraction } from '../../store/feature/doctorSlice';
 import homecss from '../Home/homecss';
-import { faNewspaper } from '@fortawesome/free-regular-svg-icons';
 
 const FindDoctors = ({ navigation }: any) => {
     const [search, setsearch] = useState('')
     const data = useSelector((state: any) => state.doctorReducer.value)
-    const renderitem = (data: any) => {
+    const renderItem = (data: any) => {
         return (
-            <TouchableOpacity style={doctorcss.touc}>
-                <View style={doctorcss.view1}>
+            <TouchableOpacity style={[homecss.touc2, {height:220 }]} >
+                <View style={homecss.view5}>
                     <Image
                         source={data.detail.imge}
-                        style={doctorcss.img}
+                        style={homecss.imge}
                     />
                 </View>
-                <View style={doctorcss.view2}>
-                    <View style={doctorcss.view3}>
-                        <Text style={doctorcss.text1}>{data.detail.name}</Text>
-                        <Text style={doctorcss.text2}>{data.category}</Text>
+                <View>
+                    <View style={homecss.view6}>
+                        <Text style={homecss.text5}>{data.detail.name}</Text>
+                        <Text style={homecss.text6}>{data.category}</Text>
                     </View>
-                    <View style={doctorcss.view4}>
-                        <View style={[doctorcss.view5, { width: '50%' }]}>
-                            <FontAwesomeIcon icon={faStar} style={[doctorcss.icon4, { marginLeft: '5%', marginRight: '-9%' }]} size={20} />
-                            <Text style={doctorcss.text7}>{data.detail.star}</Text>
+                    <View style={homecss.view7}>
+                        <View style={homecss.view8}>
+                            <FontAwesomeIcon icon={faStar} style={homecss.icon4} size={10} />
+                            <Text style={homecss.text7}>{data.detail.star}</Text>
                         </View>
-                        <View style={doctorcss.view6}>
-                            <FontAwesomeIcon icon={faLocationDot} style={doctorcss.icon5} size={20} />
-                            <Text style={doctorcss.text8}>{data.detail.loction}</Text>
+                        <View style={homecss.view9}>
+                            <FontAwesomeIcon icon={faLocationDot} style={homecss.icon5} size={10} />
+                            <Text style={homecss.text8}>{data.detail.loction}</Text>
                         </View>
                     </View>
                 </View>
@@ -40,7 +39,7 @@ const FindDoctors = ({ navigation }: any) => {
         )
     }
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <View style={doctorcss.view}>
                 <TouchableOpacity onPress={() => navigation.navigate('Tabbar', { screen: 'HomeScreen' })} >
                     <FontAwesomeIcon icon={faChevronLeft} style={doctorcss.icon} size={30} />
@@ -105,15 +104,14 @@ const FindDoctors = ({ navigation }: any) => {
                     </View>
                 </View>
             </View>
-            <View>
-                <Text style={doctorcss.text19}>Recommended Doctors</Text>
-                <FlatList
-                    data={data}
-                    renderItem={({ item }) => renderitem(item)}
-                    keyExtractor={(item: any) => item.id.toString()}
-                    horizontal={true}
-                />
-            </View>
+            <Text style={doctorcss.text19}>Recommended Doctors</Text>
+            <FlatList
+                data={data}
+                renderItem={({ item }) => renderItem(item)}
+                keyExtractor={(item: any) => item.id.toString()}
+                horizontal={true}
+            />
+            <Text  style={[doctorcss.text19,{marginTop:'-20%'}]}>Your Recent Doctors</Text>
         </View>
     )
 }

@@ -39,10 +39,6 @@ const Home = ({ navigation }: any) => {
         dispatch(doctoraction(data));
         navigation.navigate('DoctorScreen', { screen: 'DoctorDetail' })
     }
-    const handlefinde = (data:any) => {
-        dispatch(doctoraction(data));
-        navigation.navigate('DoctorScreen', { screen: 'FindDoctors' })
-    }
 
     const renderItem = (data: any) => {
         return (
@@ -89,7 +85,7 @@ const Home = ({ navigation }: any) => {
             </View>
             <View style={homecss.toucview}>
                 <View>
-                    <TouchableOpacity style={homecss.touc} onPress={() => handlefinde(data)}>
+                    <TouchableOpacity style={homecss.touc} onPress={()=> navigation.navigate('DoctorScreen', { screen: 'FindDoctors' })}>
                         <FontAwesomeIcon icon={faStethoscope} style={homecss.icon3} size={40} />
                     </TouchableOpacity>
                     <Text style={homecss.text1}>Doctor</Text>

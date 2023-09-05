@@ -292,9 +292,9 @@ export default StyleSheet.create({
         color:'#101623'
     },
     text19:{
-        fontSize:30,
+        fontSize:20,
         color: '#101623',
         marginLeft:'5%',
-        marginTop:'5%'
+        marginTop:'2%'
     }
 })
