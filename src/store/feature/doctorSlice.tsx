@@ -15,7 +15,7 @@ const initialStateValue = [
     },
     {
         id: 2,
-        category: 'Specialist',
+        category: 'Lungs',
         detail: {
             name: 'Dr. Maria',
             about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...hjasdnakjd asjhbxajskx  sa xjashnxiajk xajsbxajkx ajsbxiuajkhnx xajshnjak ',
@@ -80,7 +80,7 @@ const initialStateValue = [
     }, 
     {
         id: 7,
-        category: 'Cardiologist',
+        category: 'Cardiologis',
         detail: {
             name: 'Dr. Horizon',
             about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...hjasdnakjd asjhbxajskx  sa xjashnxiajk xajsbxajkx ajsbxiuajkhnx xajshnjak ',

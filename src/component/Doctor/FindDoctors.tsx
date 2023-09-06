@@ -10,9 +10,21 @@ import homecss from '../Home/homecss';
 const FindDoctors = ({ navigation }: any) => {
     const [search, setsearch] = useState('')
     const data = useSelector((state: any) => state.doctorReducer.value)
+    const dispatch = useDispatch()
+
+    const handlepress1 = (data: any) => {
+        dispatch(doctoraction(data));
+        navigation.navigate('DoctorDetail')
+
+    }
+    const handlepress2 = (data: any) => {
+        dispatch(doctoraction(data));
+        navigation.navigate('DoctorDetail')
+
+    }
     const renderItem = (data: any) => {
         return (
-            <TouchableOpacity style={[homecss.touc2, {height:220 }]} >
+            <TouchableOpacity style={[homecss.touc2, { height: 220 }]} onPress={() => handlepress1(data)} >
                 <View style={homecss.view5}>
                     <Image
                         source={data.detail.imge}
@@ -35,6 +47,17 @@ const FindDoctors = ({ navigation }: any) => {
                         </View>
                     </View>
                 </View>
+            </TouchableOpacity>
+        )
+    }
+    const renderitem1 = (data: any) => {
+        return (
+            <TouchableOpacity style={doctorcss.view18} onPress={() => handlepress2(data)}>
+                <Image
+                    source={data.detail.imge}
+                    style={homecss.imge}
+                />
+                <Text style={homecss.text5}>{data.detail.name}</Text>
             </TouchableOpacity>
         )
     }
@@ -104,14 +127,24 @@ const FindDoctors = ({ navigation }: any) => {
                     </View>
                 </View>
             </View>
-            <Text style={doctorcss.text19}>Recommended Doctors</Text>
-            <FlatList
-                data={data}
-                renderItem={({ item }) => renderItem(item)}
-                keyExtractor={(item: any) => item.id.toString()}
-                horizontal={true}
-            />
-            <Text  style={[doctorcss.text19,{marginTop:'-20%'}]}>Your Recent Doctors</Text>
+            <View>
+                <Text style={doctorcss.text19}>Recommended Doctors</Text>
+                <FlatList
+                    data={data}
+                    renderItem={({ item }) => renderItem(item)}
+                    keyExtractor={(item: any) => item.id.toString()}
+                    horizontal={true}
+                />
+            </View>
+            <View>
+                <Text style={[doctorcss.text19, { marginTop: '1%' }]}>Your Recent Doctors</Text>
+                <FlatList
+                    data={data}
+                    renderItem={({ item }) => renderitem1(item)}
+                    keyExtractor={(item: any) => item.id.toString()}
+                    horizontal={true}
+                />
+            </View>
         </View>
     )
 }

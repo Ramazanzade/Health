@@ -257,44 +257,48 @@ export default StyleSheet.create({
     selectview: {
         width: "90%",
         alignSelf: 'center',
-        marginTop:'5%',
+        marginTop: '5%',
     },
-    input:{
-        borderWidth:1,
+    input: {
+        borderWidth: 1,
         borderColor: '#ADADAD',
-        borderRadius:10,
-        width:'90%',
-        alignSelf:'center',
-        paddingLeft:20
+        borderRadius: 10,
+        width: '90%',
+        alignSelf: 'center',
+        paddingLeft: 20
     },
-    input1:{
-        borderWidth:1,
+    input1: {
+        borderWidth: 1,
         borderColor: '#ADADAD',
-        borderRadius:10,
-        width:'40%',
-        paddingLeft:20
+        borderRadius: 10,
+        width: '40%',
+        paddingLeft: 20
     },
-    view16:{
-        display:'flex',
-        flexDirection:'row',
-        justifyContent:'space-evenly',
-        marginTop:'3%'
+    view16: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        marginTop: '3%'
     },
-    view17:{
-        marginTop:'5%'
+    view17: {
+        marginTop: '5%'
     },
-    text17:{
+    text17: {
         color: '#A1A8B0',
-        fontSize:16
+        fontSize: 16
     },
-    text18:{
-        fontSize:25,
-        color:'#101623'
+    text18: {
+        fontSize: 25,
+        color: '#101623'
     },
-    text19:{
-        fontSize:20,
+    text19: {
+        fontSize: 20,
         color: '#101623',
-        marginLeft:'5%',
-        marginTop:'2%'
+        marginLeft: '5%',
+        marginTop: '3%'
+    },
+    view18: {
+        margin: 10,
+        marginTop:-5
     }
 })
