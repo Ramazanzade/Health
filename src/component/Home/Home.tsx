@@ -8,21 +8,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import { doctoraction } from '../../store/feature/doctorSlice';
 const Home = ({ navigation }: any) => {
     const [search, setsearch] = useState('')
-    const item = useSelector((state: any) => state.reclamReducer.value)
+    const item1 = useSelector((state: any) => state.reclamReducer.value)
     const data = useSelector((state: any) => state.doctorReducer.value)
-    const items = useSelector((state:any)=>state.dermanproductReducer.value)
-    const renderitem = (item: any) => {
+    const items = useSelector((state: any) => state.dermanproductReducer.value)
+    const renderitem = (item1: any) => {
         return (
             <View style={homecss.view2}>
                 <View style={homecss.view3} >
-                    <Text style={homecss.text3}>{item.decripdion}</Text>
+                    <Text style={homecss.text3}>{item1.decripdion}</Text>
                     <TouchableOpacity style={homecss.touc1}>
                         <Text style={homecss.text4}>Learn more</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={homecss.view4}>
                     <Image
-                        source={item.img}
+                        source={item1.img}
                         style={homecss.img}
                     />
                 </View>
@@ -31,16 +31,15 @@ const Home = ({ navigation }: any) => {
     }
 
     const dispatch = useDispatch()
-    const [localData, setLocalData] = useState([]);
-    useEffect(() => {
-        dispatch(doctoraction(data));
-        setLocalData(data)
-    }, []);
+ 
     const handleprees = (data: any) => {
         dispatch(doctoraction(data));
         navigation.navigate('DoctorScreen', { screen: 'DoctorDetail' })
     }
-
+    const handleprees1 = (items: any) => {
+        dispatch(doctoraction(items));
+        navigation.navigate('DermanScreen', { screen: 'Arcticles' })
+    }
     const renderItem = (data: any) => {
         return (
             <TouchableOpacity style={homecss.touc2} onPress={() => handleprees(data)}>
@@ -68,24 +67,24 @@ const Home = ({ navigation }: any) => {
         )
     }
 
-const renderitem2 = (items:any)=>{
-    return(
-        <TouchableOpacity style={homecss.touc3}>
-            <View style={homecss.view11}>
-                <Image
-                source={items.imge}
-                style={homecss.img1}
-                />
-            </View>
-            <View style={homecss.view12}>
-                <Text style={homecss.text11}>{items.name}</Text>
-                <Text style={homecss.text12}>{items.price} - <Text style={homecss.text13}>{items.red}</Text></Text>
-            </View>
-        </TouchableOpacity>
-    )
-}
+    const renderitem2 = (items: any) => {
+        return (
+            <TouchableOpacity style={homecss.touc3} onPress={()=>handleprees1(items)}>
+                <View style={homecss.view11}>
+                    <Image
+                        source={items.imge}
+                        style={homecss.img1}
+                    />
+                </View>
+                <View style={homecss.view12}>
+                    <Text style={homecss.text11}>{items.name}</Text>
+                    <Text style={homecss.text12}>{items.price} - <Text style={homecss.text13}>{items.red}</Text></Text>
+                </View>
+            </TouchableOpacity>
+        )
+    }
     return (
-        <ScrollView style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
+        <View style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
             <View style={homecss.view1}>
                 <Text style={homecss.text}>Find your desire healt solution</Text>
                 <TouchableOpacity>
@@ -101,70 +100,73 @@ const renderitem2 = (items:any)=>{
                     placeholder='Search doctor, drugs, articles...'
                 />
             </View>
-            <View style={homecss.toucview}>
-                <View>
-                    <TouchableOpacity style={homecss.touc} onPress={()=> navigation.navigate('DoctorScreen', { screen: 'FindDoctors' })}>
-                        <FontAwesomeIcon icon={faStethoscope} style={homecss.icon3} size={40} />
-                    </TouchableOpacity>
-                    <Text style={homecss.text1}>Doctor</Text>
+            <ScrollView horizontal={true}>
+                <View style={homecss.toucview}>
+                    <View>
+                        <TouchableOpacity style={homecss.touc} onPress={() => navigation.navigate('DoctorScreen', { screen: 'FindDoctors' })}>
+                            <FontAwesomeIcon icon={faStethoscope} style={homecss.icon3} size={40} />
+                        </TouchableOpacity>
+                        <Text style={homecss.text1}>Doctor</Text>
+                    </View>
+                    <View>
+                        <TouchableOpacity style={homecss.touc}>
+                            <FontAwesomeIcon icon={faKitMedical} style={homecss.icon3} size={40} />
+                        </TouchableOpacity>
+                        <Text style={homecss.text1}>Pharmacy</Text>
+                    </View>
+                    <View>
+                        <TouchableOpacity style={homecss.touc}>
+                            <FontAwesomeIcon icon={faNewspaper} style={homecss.icon3} size={40} />
+                        </TouchableOpacity>
+                        <Text style={homecss.text1}>News</Text>
+                    </View>
+                    <View>
+                        <TouchableOpacity style={homecss.touc}>
+                            <FontAwesomeIcon icon={faTruckMedical} style={homecss.icon3} size={40} />
+                        </TouchableOpacity>
+                        <Text style={homecss.text1}>Ambulance</Text>
+                    </View>
                 </View>
                 <View>
-                    <TouchableOpacity style={homecss.touc}>
-                        <FontAwesomeIcon icon={faKitMedical} style={homecss.icon3} size={40} />
-                    </TouchableOpacity>
-                    <Text style={homecss.text1}>Pharmacy</Text>
+                    <FlatList
+                        data={item1}
+                        renderItem={({ item }) => renderitem(item)}
+                        keyExtractor={(item: any) => item.id.toString()}
+                        style={homecss.flatlist}
+                        horizontal={true}
+                    />
                 </View>
                 <View>
-                    <TouchableOpacity style={homecss.touc}>
-                        <FontAwesomeIcon icon={faNewspaper} style={homecss.icon3} size={40} />
-                    </TouchableOpacity>
-                    <Text style={homecss.text1}>News</Text>
+                    <View style={homecss.view10}>
+                        <Text style={homecss.text9}>Top Doctor</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('DoctorScreen', { screen: 'TopDoctor' })}>
+                            <Text style={homecss.text10}> See all</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <FlatList
+                        data={data}
+                        renderItem={({ item }) => renderItem(item)}
+                        keyExtractor={(item: any) => item.id.toString()}
+                        horizontal={true}
+                    />
                 </View>
                 <View>
-                    <TouchableOpacity style={homecss.touc}>
-                        <FontAwesomeIcon icon={faTruckMedical} style={homecss.icon3} size={40} />
-                    </TouchableOpacity>
-                    <Text style={homecss.text1}>Ambulance</Text>
+                    <View style={homecss.view10}>
+                        <Text style={homecss.text9}>Top Doctor</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('DermanScreen', { screen: 'Arcticles' })}>
+                            <Text style={homecss.text10}> See all</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <FlatList
+                        data={items}
+                        renderItem={({ item }) => renderitem2(item)}
+                        keyExtractor={(item: any) => item.id.toString()}
+                        horizontal={true}
+                        style={homecss.flatlist1}
+                    />
                 </View>
-            </View>
-            <View>
-                <FlatList
-                    data={item}
-                    renderItem={({ item }) => renderitem(item)}
-                    keyExtractor={(item: any) => item.id.toString()}
-                    style={homecss.flatlist}
-                    horizontal={true}
-                />
-            </View>
-            {/* <View>
-                <View style={homecss.view10}>
-                    <Text style={homecss.text9}>Top Doctor</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('DoctorScreen', { screen: 'TopDoctor' })}>
-                        <Text style={homecss.text10}> See all</Text>
-                    </TouchableOpacity>
-                </View>
-                <FlatList
-                    data={data}
-                    renderItem={({ item }) => renderItem(item)}
-                    keyExtractor={(item: any) => item.id.toString()}
-                    horizontal={true}
-                />
-            </View> */}
-            <View>
-                <View style={homecss.view10}>
-                    <Text style={homecss.text9}>Top Doctor</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('DoctorScreen', { screen: 'TopDoctor' })}>
-                        <Text style={homecss.text10}> See all</Text>
-                    </TouchableOpacity>
-                </View>
-                <FlatList
-                    data={items}
-                    renderItem={({ item }) => renderitem2(item)}
-                    keyExtractor={(item: any) => item.id.toString()}
-                    horizontal={true}
-                />
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </View>
     )
 }
 

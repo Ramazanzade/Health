@@ -25,8 +25,8 @@ export default StyleSheet.create({
     icon2: {
         position: 'absolute',
         zIndex: 2,
-        margin: 20,
-        paddingLeft: 55,
+        margin: 15,
+        paddingLeft: 60,
         color: '#b7b8bc'
     },
     input: {
@@ -34,7 +34,7 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderRadius: 30,
         borderColor: '#b7b8bc',
-        height: 60,
+        height: 50,
         width: '90%',
         marginHorizontal: '5%',
         paddingLeft: 50,
@@ -186,7 +186,8 @@ export default StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginHorizontal: '6%'
+        marginHorizontal: '6%',
+        marginTop:'1%'
     },
     text9: {
         fontSize: 20,
@@ -199,25 +200,42 @@ export default StyleSheet.create({
         fontSize: 15,
     },
     touc3: {
-        backgroundColor: 'red'
+        display: 'flex',
+        flexDirection: 'row',
+        borderWidth: 1,
+        borderColor: '#E8F3F1',
+        borderRadius: 20,
+        marginHorizontal: '2%',
+        marginVertical:'2%',
+
     },
     view11: {
 
     },
     view12: {
-
+        marginLeft: 10
     },
     text11: {
-
+        fontSize: 18,
+        fontWeight: '700',
+        color: '#101623',
+        width: '60%',
+        marginTop: '2%'
     },
     text12: {
-
+        marginTop: '3%'
     },
     img1: {
+        width: 90,
+        height: 90,
+        borderRadius: 10,
+        margin: 7
 
     },
     text13: {
-
+        color: '#199A8E',
+    },
+    flatlist1: {
     }
 
 })
