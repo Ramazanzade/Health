@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, TextInput, Image, FlatList } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, Image, FlatList, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBell, faNewspaper } from '@fortawesome/free-regular-svg-icons';
@@ -10,6 +10,7 @@ const Home = ({ navigation }: any) => {
     const [search, setsearch] = useState('')
     const item = useSelector((state: any) => state.reclamReducer.value)
     const data = useSelector((state: any) => state.doctorReducer.value)
+    const items = useSelector((state:any)=>state.dermanproductReducer.value)
     const renderitem = (item: any) => {
         return (
             <View style={homecss.view2}>
@@ -66,8 +67,25 @@ const Home = ({ navigation }: any) => {
             </TouchableOpacity>
         )
     }
+
+const renderitem2 = (items:any)=>{
+    return(
+        <TouchableOpacity style={homecss.touc3}>
+            <View style={homecss.view11}>
+                <Image
+                source={items.imge}
+                style={homecss.img1}
+                />
+            </View>
+            <View style={homecss.view12}>
+                <Text style={homecss.text11}>{items.name}</Text>
+                <Text style={homecss.text12}>{items.price} - <Text style={homecss.text13}>{items.red}</Text></Text>
+            </View>
+        </TouchableOpacity>
+    )
+}
     return (
-        <View style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
+        <ScrollView style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
             <View style={homecss.view1}>
                 <Text style={homecss.text}>Find your desire healt solution</Text>
                 <TouchableOpacity>
@@ -118,7 +136,7 @@ const Home = ({ navigation }: any) => {
                     horizontal={true}
                 />
             </View>
-            <View>
+            {/* <View>
                 <View style={homecss.view10}>
                     <Text style={homecss.text9}>Top Doctor</Text>
                     <TouchableOpacity onPress={() => navigation.navigate('DoctorScreen', { screen: 'TopDoctor' })}>
@@ -131,8 +149,22 @@ const Home = ({ navigation }: any) => {
                     keyExtractor={(item: any) => item.id.toString()}
                     horizontal={true}
                 />
+            </View> */}
+            <View>
+                <View style={homecss.view10}>
+                    <Text style={homecss.text9}>Top Doctor</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('DoctorScreen', { screen: 'TopDoctor' })}>
+                        <Text style={homecss.text10}> See all</Text>
+                    </TouchableOpacity>
+                </View>
+                <FlatList
+                    data={items}
+                    renderItem={({ item }) => renderitem2(item)}
+                    keyExtractor={(item: any) => item.id.toString()}
+                    horizontal={true}
+                />
             </View>
-        </View>
+        </ScrollView>
     )
 }
 

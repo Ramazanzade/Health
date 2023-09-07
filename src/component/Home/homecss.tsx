@@ -44,7 +44,6 @@ export default StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        marginTop: '5%'
     },
     touc: {
         width: 80,
@@ -138,8 +137,8 @@ export default StyleSheet.create({
         width: 50,
         marginTop: 10,
         marginRight: 15,
-        marginBottom:'5%',
-        height:20
+        marginBottom: '5%',
+        height: 20
     },
     view9: {
         display: 'flex',
@@ -166,7 +165,7 @@ export default StyleSheet.create({
     },
     text7: {
         color: '#199A8E',
-        
+
     },
     text8: {
         color: '#ADADAD'
@@ -176,7 +175,7 @@ export default StyleSheet.create({
         color: '#199A8E',
         marginTop: '10%',
         marginRight: '10%',
-        marginLeft:'10%'
+        marginLeft: '10%'
     },
     icon5: {
         marginTop: '5%',
@@ -198,6 +197,27 @@ export default StyleSheet.create({
         color: '#199A8E',
         marginTop: '20%',
         fontSize: 15,
+    },
+    touc3: {
+        backgroundColor: 'red'
+    },
+    view11: {
+
+    },
+    view12: {
+
+    },
+    text11: {
+
+    },
+    text12: {
+
+    },
+    img1: {
+
+    },
+    text13: {
+
     }
 
 })
