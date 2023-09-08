@@ -5,6 +5,7 @@ import Arcticles from '../../../component/Derman/Arcticles';
 import Pharmacy from '../../../component/Derman/Pharmacy';
 import DrugsDetail from '../../../component/Derman/DrugsDetail';
 import MyCart from '../../../component/Derman/MyCart';
+import Info from '../../../component/Derman/Info';
 const Stack = createNativeStackNavigator();
 const DermanScreen = () => {
   return (
@@ -13,6 +14,7 @@ const DermanScreen = () => {
     <Stack.Screen name="Pharmacy" component={Pharmacy} />
     <Stack.Screen name="DrugsDetail" component={DrugsDetail} />
     <Stack.Screen name="MyCart" component={MyCart} />
+    <Stack.Screen name="Info" component={Info} />
 </Stack.Navigator>
   )
 }
