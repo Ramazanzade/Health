@@ -68,7 +68,7 @@ const Pharmacy = ({ navigation }: any) => {
     )
   }
   return (
-    <ScrollView style={{backgroundColor: '#ffffff'}}>
+    <View style={{backgroundColor: '#ffffff', flex:1}}>
       <View style={doctorcss.view}>
         <TouchableOpacity onPress={() => navigation.navigate('Tabbar', { screen: 'HomeScreen' })} >
           <FontAwesomeIcon icon={faChevronLeft} style={doctorcss.icon} size={30} />
@@ -88,7 +88,7 @@ const Pharmacy = ({ navigation }: any) => {
         <View style={[homecss.view10, { marginTop: '3%', marginBottom: '-2%' }]}>
           <Text style={homecss.text9}>Trending Articles</Text>
         </View>
-        <View style={{flex:1}}>
+        <View>
           <FlatList
             data={item2}
             renderItem={({ item }) => renderItem1(item)}
@@ -101,7 +101,7 @@ const Pharmacy = ({ navigation }: any) => {
         <View style={[homecss.view10, { marginTop: '3%', marginBottom: '-2%' }]}>
           <Text style={homecss.text9}>Product on Sale</Text>
         </View>
-        <View style={{flex:1}}>
+        <View>
           <FlatList
             data={item2}
             renderItem={({ item }) => renderItem2(item)}
@@ -110,7 +110,7 @@ const Pharmacy = ({ navigation }: any) => {
           />
         </View>
       </View>
-    </ScrollView>
+    </View>
   )
 }
 

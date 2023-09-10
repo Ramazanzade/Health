@@ -120,7 +120,7 @@ export default StyleSheet.create({
         borderRadius: 5,
         backgroundColor: '#199A8E',
         marginRight: '10%',
-        marginTop:5
+        marginTop: 5
     },
     text11: {
         fontSize: 20,
@@ -148,5 +148,51 @@ export default StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between'
+    },
+    imge3: {
+        width: 200,
+        height: 200,
+        alignSelf: 'center'
+    },
+    text12: {
+        fontSize: 25,
+        fontWeight: '500',
+        color: '#101623',
+        marginLeft: '9%'
+    },
+    text13: {
+        fontWeight: '500',
+        color: '#101623',
+        marginLeft: '14%',
+        marginTop: '2%',
+
+    },
+    text14: {
+        fontWeight: '500',
+        color: '#101623',
+        textAlign: 'right',
+        fontSize: 20,
+        marginRight: '5%'
+    },
+    text15: {
+        marginLeft: '5%',
+        marginTop: 20
+    },
+    view3: {
+    },
+    view4: {
+
+    },
+    view5:{
+        margin:10,
+        marginLeft:40
+    },
+    touc4:{
+        marginTop:'5%',
+        width:20,
+        height:20,
+        borderRadius:5,
+        backgroundColor:'#199A8E',
+        position:'relative'
     }
 })
