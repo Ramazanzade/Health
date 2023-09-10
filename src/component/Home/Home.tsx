@@ -48,7 +48,7 @@ const Home = ({ navigation }: any) => {
                     <Text style={homecss.text1}>Doctor</Text>
                 </View>
                 <View>
-                    <TouchableOpacity style={homecss.touc}>
+                    <TouchableOpacity style={homecss.touc} onPress={() => navigation.navigate('DermanScreen', { screen: 'Pharmacy' })}>
                         <FontAwesomeIcon icon={faKitMedical} style={homecss.icon3} size={40} />
                     </TouchableOpacity>
                     <Text style={homecss.text1}>Pharmacy</Text>

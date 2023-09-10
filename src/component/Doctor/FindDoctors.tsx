@@ -8,7 +8,7 @@ import { doctoraction } from '../../store/feature/doctorSlice';
 import homecss from '../Home/homecss';
 
 const FindDoctors = ({ navigation }: any) => {
-    const [search, setsearch] = useState('')
+    const [search, setsearch] = useState('') 
     const data = useSelector((state: any) => state.doctorReducer.value)
     const dispatch = useDispatch()
 

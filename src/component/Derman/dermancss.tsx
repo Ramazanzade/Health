@@ -100,5 +100,53 @@ export default StyleSheet.create({
     },
     text8: {
 
+    },
+    view: {
+        borderWidth: 2,
+        borderColor: '#ADADAD',
+        borderRadius: 20,
+        marginHorizontal: '5%',
+        marginTop: '5%'
+    },
+    view1: {
+
+    },
+    touc2: {
+
+    },
+    touc3: {
+        width: 30,
+        height: 30,
+        borderRadius: 5,
+        backgroundColor: '#199A8E',
+        marginRight: '10%',
+        marginTop:5
+    },
+    text11: {
+        fontSize: 20,
+        marginLeft: '5%',
+        marginTop: '3%',
+        marginBottom: '5%',
+        fontWeight: '500',
+        color: '#101623',
+    },
+    text9: {
+        fontSize: 15,
+        fontWeight: '500',
+        color: '#101623',
+        marginLeft: '9%'
+    },
+    imge2: {
+        width: 150,
+        height: 150
+    },
+    text10: {
+        marginLeft: '8%',
+        marginTop: '3%',
+    },
+    view2: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     }
 })
