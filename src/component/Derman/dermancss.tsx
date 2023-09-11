@@ -188,11 +188,6 @@ export default StyleSheet.create({
         marginLeft:40
     },
     touc4:{
-        marginTop:'5%',
-        width:20,
-        height:20,
-        borderRadius:5,
-        backgroundColor:'#199A8E',
-        position:'relative'
+      
     }
 })
