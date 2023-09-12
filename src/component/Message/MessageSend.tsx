@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const Location = () => {
+const MessageSend = () => {
   return (
     <View>
-      <Text>Location</Text>
+      <Text>MessageSend</Text>
     </View>
   )
 }
 
-export default Location
+export default MessageSend

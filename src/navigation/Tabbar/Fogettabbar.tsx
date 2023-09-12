@@ -1,8 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Email from '../../component/ResetandCreatpassword/Email';
-import Phone from '../../component/ResetandCreatpassword/Phone';
 import EmailScreen from '../Stack/EmailStack/EmailScreen';
 import PhoneScreen from '../Stack/PhoneStcak/PhoneScreen';
 
