@@ -9,7 +9,10 @@ const initialStateValue = [
             loction: '800m away',
             star: '4.7',
             imge: require('../../asset/imge/21.png'),
-            consultation: 60
+            consultation: 60,
+            date: '12.55',
+            message: 'Salam',
+            call: 'zəng', gəlib: "zəng"
         },
 
     },
@@ -22,11 +25,15 @@ const initialStateValue = [
             loction: '700m away',
             star: '3.7',
             imge: require('../../asset/imge/22.png'),
-            consultation: 90
+            consultation: 90,
+            date: '12.55',
+            message: 'Salam',
+            message1: '2',
+            video: 'zəng', gedib: "zəng"
         },
 
     },
-     {
+    {
         id: 3,
         category: 'Dentist',
         detail: {
@@ -35,11 +42,14 @@ const initialStateValue = [
             loction: '1.5km away',
             star: '4.9',
             imge: require('../../asset/imge/23.png'),
-            consultation: 100
+            consultation: 100,
+            date: '12.55',
+            message: 'Salam',
+            video: 'zəng', gəlib: "zəng"
         },
 
     },
-     {
+    {
         id: 4,
         category: 'Psychiatrist',
         detail: {
@@ -48,11 +58,16 @@ const initialStateValue = [
             loction: '100m away',
             star: '3.5',
             imge: require('../../asset/imge/24.png'),
-            consultation: 20
+            consultation: 20,
+            date: '12.55',
+            message: 'Salam',
+            message1: '2',
+            video: 'zəng', gedib: "zəng"
+
         },
 
     },
-     {
+    {
         id: 5,
         category: 'Covid-19',
         detail: {
@@ -61,11 +76,15 @@ const initialStateValue = [
             loction: '2.5km away',
             star: '4.2',
             imge: require('../../asset/imge/25.png'),
-            consultation: 99
+            consultation: 99,
+            date: '12.55',
+            message: 'Salam',
+            video: 'zəng', gəlib: "zəng"
+
         },
 
     },
-     {
+    {
         id: 6,
         category: 'Surgeon',
         detail: {
@@ -74,10 +93,15 @@ const initialStateValue = [
             loction: '700m away',
             star: '3.2',
             imge: require('../../asset/imge/21.png'),
-            consultation: 60
+            consultation: 60,
+            date: '12.55',
+            message: 'Salam',
+            message1: '2',
+            call: 'zəng', gedib: "zəng"
+
         },
 
-    }, 
+    },
     {
         id: 7,
         category: 'Cardiologis',
@@ -87,7 +111,11 @@ const initialStateValue = [
             loction: '5.5km away',
             star: '4.9',
             imge: require('../../asset/imge/22.png'),
-            consultation: 90
+            consultation: 90,
+            date: '12.55',
+            message: 'Salam',
+            call: 'zəng', gedib: "zəng"
+
         },
 
     }
