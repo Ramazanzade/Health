@@ -10,6 +10,7 @@ const MessageScreen = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }} >
       <Stack.Screen name="MessageHome" component={MessageHome} />
+      <Stack.Screen name="MessageSend" component={MessageSend} />
     </Stack.Navigator>
   )
 }
