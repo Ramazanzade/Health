@@ -1,77 +1,55 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faEarthOceania, faPlay, faGamepad } from '@fortawesome/free-solid-svg-icons';
-import { faMoon,  } from '@fortawesome/free-regular-svg-icons';
+import { faEarthOceania, faHome, faBasketShopping } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import HomeScreen from '../Stack/HomeStack/HomeScreen';
 import MessageScreen from '../Stack/MessageStack/MessageScreen';
 import CalendarScreen from '../Stack/CalendarStack/CalendarScreen';
 import LocationScreen from '../Stack/LocationStack/LocationScreen';
 import tabbarcss from './tabbarcss';
-
-
-
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 
 const Tab = createBottomTabNavigator();
 
-
-
 const Tabbar = ({ route }: any) => {
-
   return (
-
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={({ route }) => ({
         headerShown: false,
         tabBarStyle: {
           height: 70,
-          shadowColor: '#0E1826',
           shadowOffset: {
             width: 0,
             height: 0,
-
           },
-          backgroundColor: '#346173',
-          
         },
-        tabBarInactiveBackgroundColor: '#022E40',
-        tabBarActiveTintColor: "red",
-      
+        tabBarIcon: ({ color, size, focused }) => {
+          let iconName: IconDefinition | undefined;
+          if (route.name === 'HomeScreen') {
+            iconName = faHome;
+          } else if (route.name === 'MessageScreen') {
+            iconName = faEnvelope;
+          } else if (route.name === 'CalendarScreen') {
+            iconName = faBasketShopping;
+          } else if (route.name === 'LocationScreen') {
+            iconName = faUser;
+          }
 
-      }}
+          const iconColor = focused ? "#306B60" : "gray";
+          const icon = iconName || faEarthOceania; 
+
+          return <FontAwesomeIcon icon={icon} style={tabbarcss.tabIcon} size={35} color={iconColor} />;
+        },
+        tabBarShowLabel: false,
+      })}
     >
-      <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, size, focused }: any) => <FontAwesomeIcon icon={faEarthOceania} style={tabbarcss.tabIcon} size={35} />,
-          tabBarShowLabel: false,
-        }}
-        name="HomeScreen" component={HomeScreen}
-      />
-      <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, size, focused }: any) => <FontAwesomeIcon icon={faMoon} style={tabbarcss.tabIcon} size={35} />,
-          tabBarShowLabel: false,
-        }}
-        name="MessageScreen" component={MessageScreen}
-      />
-      <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, size, focused }: any) => <FontAwesomeIcon icon={faPlay} style={tabbarcss.tabIcon} size={35} />,
-          tabBarShowLabel: false,
-        }}
-        name="CalendarScreen" component={CalendarScreen}
-      />
-      <Tab.Screen
-        options={{
-          tabBarIcon: ({ color, size, focused }: any) => <FontAwesomeIcon icon={faGamepad} style={tabbarcss.tabIcon} size={35} />,
-          tabBarShowLabel: false,
-        }}
-        name="LocationScreen" 
-        component={LocationScreen} 
-      />
+      <Tab.Screen name="HomeScreen" component={HomeScreen} />
+      <Tab.Screen name="MessageScreen" component={MessageScreen} />
+      <Tab.Screen name="CalendarScreen" component={CalendarScreen} />
+      <Tab.Screen name="LocationScreen" component={LocationScreen} />
     </Tab.Navigator>
-
-  )
+  );
 }
 
 export default Tabbar;

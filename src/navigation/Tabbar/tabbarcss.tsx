@@ -5,7 +5,7 @@ const tabbarcss = StyleSheet.create({
     tabIcon: {
         fontSize: 35,
         opacity:0.5,
-        color:'#ffffff'
+        color:'#ADADAD'
 
     },
     middleIcon: {
@@ -13,7 +13,7 @@ const tabbarcss = StyleSheet.create({
         marginBottom: 55,
         padding: 30,
         opacity:0.2,
-        backgroundColor:'#022E40'
+        backgroundColor:'#ADADAD'
     },
 });
 

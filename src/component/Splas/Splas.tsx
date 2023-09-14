@@ -4,6 +4,8 @@ const Splas = ({navigation}:any) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             navigation.navigate('OnboardinScreen', { screen: 'Onboarding' })
+            console.log('salam');
+            
         }, 2000);
     
         return () => clearTimeout(timer);
