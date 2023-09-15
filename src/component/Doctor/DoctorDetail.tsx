@@ -133,7 +133,7 @@ const DoctorDetail = ({ navigation }: any) => {
                         style={[
                             doctorcss.datetouc,
                             selectedDay === index ? { backgroundColor: '#199A8E' } : null,
-                            index >= currentDate.getDay() ? null : { borderColor: 'red' }, 
+                            // index === currentDate.getDay() ? null : { borderColor: 'red' }, 
 
                         ]}
                         onPress={() => {

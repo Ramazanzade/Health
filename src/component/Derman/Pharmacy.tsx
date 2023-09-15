@@ -1,29 +1,34 @@
 import { View, Text, TouchableOpacity, FlatList, Image, TextInput, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faChevronLeft, faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faMagnifyingGlass, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
 import doctorcss from '../Doctor/doctorcss';
 import { useSelector, useDispatch } from 'react-redux';
 import { doctoraction } from '../../store/feature/doctorSlice';
 import homecss from '../Home/homecss';
 import dermancss from './dermancss';
-import { dermanaction } from '../../store/feature/dermanSlice';
+import { dermanaction, toggleFavorite } from '../../store/feature/dermanSlice';
 const Pharmacy = ({ navigation }: any) => {
   const [search, setsearch] = useState('')
   const item2 = useSelector((state: any) => state.dermanReducer.value)
   const dispatch = useDispatch()
-  const handlepres=(item2:any)=>{
+  const handlepres = (item2: any) => {
     dispatch(dermanaction(item2));
     navigation.navigate('DrugsDetail')
   }
-  const handlepres1=(item2:any)=>{
+  const handlepres1 = (item2: any) => {
     dispatch(dermanaction(item2));
     navigation.navigate('DrugsDetail')
+  }
+  const handle =(item2:any)=>{
+    dispatch(toggleFavorite(item2.id))
+    console.log('salam', dispatch);
+    
   }
   const renderItem1 = (item2: any) => {
     return (
       <View style={dermancss.view}>
-        <TouchableOpacity style={dermancss.touc2} onPress={()=>handlepres(item2)}>
+        <TouchableOpacity style={dermancss.touc2} onPress={() => handlepres(item2)}>
           <Image
             source={item2.imge}
             style={dermancss.imge2}
@@ -35,8 +40,13 @@ const Pharmacy = ({ navigation }: any) => {
         </View>
         <View style={dermancss.view2}>
           <Text style={dermancss.text11}>${item2.price}</Text>
-          <TouchableOpacity style={dermancss.touc3}>
-            <FontAwesomeIcon icon={faPlus} style={[doctorcss.icon, { marginLeft: '12%' }]} color='#ffffff' size={20} />
+          <TouchableOpacity style={dermancss.touc3} onPress={() =>handle(item2)}>
+            <FontAwesomeIcon
+              icon={item2.isFavorite ? faCheck : faPlus}
+              style={[doctorcss.icon, { marginLeft: '12%' }]}
+              color='#ffffff'
+              size={20}
+            />
           </TouchableOpacity>
         </View>
       </View>
@@ -45,7 +55,7 @@ const Pharmacy = ({ navigation }: any) => {
   const renderItem2 = (item2: any) => {
     return (
       <View style={dermancss.view}>
-        <TouchableOpacity style={dermancss.touc2} onPress={()=>handlepres1(item2)}>
+        <TouchableOpacity style={dermancss.touc2} onPress={() => handlepres1(item2)}>
           <Image
             source={item2.imge}
             style={dermancss.imge2}
@@ -53,9 +63,9 @@ const Pharmacy = ({ navigation }: any) => {
         </TouchableOpacity>
         <View style={dermancss.view1}>
           <Text style={dermancss.text9}>{item2.name}</Text>
-          <View style={{display:'flex',flexDirection:'row',}}>
-          <Text style={dermancss.text10}>{item2.qram}</Text>
-          <Text style={[dermancss.text10,{marginLeft:60,textDecorationLine: 'line-through' }]}>${item2.star}</Text>
+          <View style={{ display: 'flex', flexDirection: 'row', }}>
+            <Text style={dermancss.text10}>{item2.qram}</Text>
+            <Text style={[dermancss.text10, { marginLeft: 60, textDecorationLine: 'line-through' }]}>${item2.star}</Text>
           </View>
         </View>
         <View style={dermancss.view2}>
@@ -68,7 +78,7 @@ const Pharmacy = ({ navigation }: any) => {
     )
   }
   return (
-    <View style={{backgroundColor: '#ffffff', flex:1}}>
+    <View style={{ backgroundColor: '#ffffff', flex: 1 }}>
       <View style={doctorcss.view}>
         <TouchableOpacity onPress={() => navigation.navigate('Tabbar', { screen: 'HomeScreen' })} >
           <FontAwesomeIcon icon={faChevronLeft} style={doctorcss.icon} size={30} />
