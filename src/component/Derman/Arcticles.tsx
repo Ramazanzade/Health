@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, FlatList, Image, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView, Image, TextInput , FlatList} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faStethoscope, faMagnifyingGlass, faVirusCovid, faLungs, faTooth, faBrain, faSyringe, faHeartCircleBolt, faStar, faLocationDot } from '@fortawesome/free-solid-svg-icons';
@@ -81,7 +81,8 @@ const Arcticles = ({ navigation }: any) => {
                     placeholder='Search doctor, drugs, articles...'
                 />
             </View>
-            <View>
+           <ScrollView>
+           <View>
                 <Text style={[doctorcss.text19, { marginTop: '5%' }]}>Popular Articles</Text>
                 <FlatList
                     data={items}
@@ -113,6 +114,7 @@ const Arcticles = ({ navigation }: any) => {
                     style={homecss.flatlist1}
                 />
             </View>
+           </ScrollView>
         </View>
     )
 }

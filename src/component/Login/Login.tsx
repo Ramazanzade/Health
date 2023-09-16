@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, TextInput, Image, ActivityIndicator, Modal, Touchable } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, Image, ActivityIndicator, Modal, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faEnvelope, faLock, faEye, faEyeSlash, faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -58,7 +58,7 @@ const Login = ({ navigation }: any) => {
     };
 
     return (
-        <View style={[loginstayle.viewd, backgroundRed && { backgroundColor: '#b7b8bc' }]}>
+        <ScrollView style={[loginstayle.viewd, backgroundRed && { backgroundColor: '#b7b8bc' }]}>
             <View style={loginstayle.view}>
                 <TouchableOpacity onPress={() => navigation.navigate('OnboardinScreen', { screen: 'Onboarding2' })}>
                     <FontAwesomeIcon icon={faChevronLeft} style={loginstayle.icon} size={25} />
@@ -161,7 +161,7 @@ const Login = ({ navigation }: any) => {
                     <Text style={loginstayle.text6}>Sign in with Facebook</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </ScrollView>
     )
 }
 

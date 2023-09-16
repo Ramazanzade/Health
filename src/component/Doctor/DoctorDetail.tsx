@@ -14,8 +14,9 @@ const DoctorDetail = ({ navigation }: any) => {
     const [selectedDay, setSelectedDay] = useState<any>(null);
     const [selectedId, setSelectedId] = useState<any>(null);
     const [saat, setsaat] = useState<any>(null)
-    const [localData, setLocalData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch()
+
     const toggleText = () => {
         setShowFullText(!showFullText);
     };
@@ -33,7 +34,7 @@ const DoctorDetail = ({ navigation }: any) => {
         'September', 'October', 'November', 'December',
     ];
     for (let i = 0; i < 7; i++) {
-        const dayOfWeekIndex = (currentDayOfWeek + i) % 7;
+        const dayOfWeekIndex = (currentDayOfWeek+i) % 7;
         const dayOfMonth = currentDayOfMonth + i;
         const month = currentMonth;
         const year = currentYear;
@@ -65,12 +66,6 @@ const DoctorDetail = ({ navigation }: any) => {
         );
     };
 
-
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(doctoraction(data));
-        setLocalData(data)
-    }, []);
     const handleclick = (data: any) => {
         if (selectedDay !== null || saat !== null) {
             setLoading(true);
@@ -87,11 +82,14 @@ const DoctorDetail = ({ navigation }: any) => {
             console.error('Please select a day and time for the appointment.');
         }
     }
-
+ const hanldepres =(data:any)=>{
+    dispatch(doctoraction(data));
+    navigation.navigate('Tabbar', { screen: 'HomeScreen' })  
+ }
     return (
         <View style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
             <View style={doctorcss.view}>
-                <TouchableOpacity onPress={() => navigation.navigate('FindDoctors')} >
+                <TouchableOpacity onPress={() =>hanldepres(data)}>
                     <FontAwesomeIcon icon={faChevronLeft} style={doctorcss.icon} size={30} />
                 </TouchableOpacity>
                 <Text style={doctorcss.text}>Doctor Detail</Text>
@@ -137,14 +135,12 @@ const DoctorDetail = ({ navigation }: any) => {
                         key={index}
                         style={[
                             doctorcss.datetouc,
-                            selectedDay === index ? { backgroundColor: '#199A8E' } : null,
-                            index >= currentDate.getDay() ? null : { borderColor: 'red' },
-
+                            selectedDay == index ? { backgroundColor: '#199A8E' } : null,
                         ]}
                         onPress={() => {
-                            if (index >= currentDate.getDay()) {
+                            // if (index >= currentDate.getDay()) {
                                 setSelectedDay(index);
-                            }
+                            // }
                         }}
                     >
                         <Text style={doctorcss.text5}>

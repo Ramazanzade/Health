@@ -21,12 +21,12 @@ const Location = ({ navigation }: any) => {
     setLoading1(true);
     setTimeout(() => {
       setSuccessModalVisible(false);
-      navigation.navigate('Tabbar', { screen: 'HomeScreen' })
+      navigation.navigate('LoginScreen', { screen: 'Login' })
     }, 2000);
   };
 
   return (
-    <View style={{ backgroundColor: '#66DED4', flex: 1 }}>
+    <ScrollView style={{ backgroundColor: '#66DED4', flex: 1 }}>
       <View style={locetioncss.view}>
         <Image
           source={require('../../asset/imge/111.png')}
@@ -110,7 +110,7 @@ const Location = ({ navigation }: any) => {
           </View>
         </View>
       </Modal>
-    </View>
+    </ScrollView>
   )
 }
 
