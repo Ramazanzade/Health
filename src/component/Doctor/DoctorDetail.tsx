@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native'
+import { View, Text, TouchableOpacity, Image, ScrollView, FlatList, ActivityIndicator } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import doctorcss from './doctorcss'
@@ -15,6 +15,7 @@ const DoctorDetail = ({ navigation }: any) => {
     const [selectedId, setSelectedId] = useState<any>(null);
     const [saat, setsaat] = useState<any>(null)
     const [localData, setLocalData] = useState([]);
+    const [loading, setLoading] = useState(false);
     const toggleText = () => {
         setShowFullText(!showFullText);
     };
@@ -22,7 +23,7 @@ const DoctorDetail = ({ navigation }: any) => {
     const currentDate = new Date();
     const currentDayOfWeek = currentDate.getDay();
     const currentDayOfMonth = currentDate.getDate();
-    const currentMonth = currentDate.getMonth(); 
+    const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const daysOfWeek: any = [];
@@ -34,7 +35,7 @@ const DoctorDetail = ({ navigation }: any) => {
     for (let i = 0; i < 7; i++) {
         const dayOfWeekIndex = (currentDayOfWeek + i) % 7;
         const dayOfMonth = currentDayOfMonth + i;
-        const month = currentMonth ;
+        const month = currentMonth;
         const year = currentYear;
         daysOfWeek.push({
             dayName: dayNames[dayOfWeekIndex],
@@ -72,21 +73,25 @@ const DoctorDetail = ({ navigation }: any) => {
     }, []);
     const handleclick = (data: any) => {
         if (selectedDay !== null || saat !== null) {
-            dispatch(doctoraction(data));
-            navigation.navigate('Appointment', {
-                selectedDay: daysOfWeek[selectedDay],
-                selectedTime: saat,
-                doctorData: data,
-            });
+            setLoading(true);
+            setTimeout(() => {
+                setLoading(false);
+                dispatch(doctoraction(data));
+                navigation.navigate('Appointment', {
+                    selectedDay: daysOfWeek[selectedDay],
+                    selectedTime: saat,
+                    doctorData: data,
+                });
+            }, 2000);
         } else {
             console.error('Please select a day and time for the appointment.');
         }
     }
 
     return (
-        <View style={{backgroundColor:'#FFFFFF', flex:1}}>
+        <View style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
             <View style={doctorcss.view}>
-                <TouchableOpacity onPress={() => navigation.navigate('Tabbar', { screen: 'HomeScreen' })} >
+                <TouchableOpacity onPress={() => navigation.navigate('FindDoctors')} >
                     <FontAwesomeIcon icon={faChevronLeft} style={doctorcss.icon} size={30} />
                 </TouchableOpacity>
                 <Text style={doctorcss.text}>Doctor Detail</Text>
@@ -104,8 +109,8 @@ const DoctorDetail = ({ navigation }: any) => {
                         <Text style={doctorcss.text2}>{data.category}</Text>
                     </View>
                     <View style={doctorcss.view4}>
-                    <View style={[doctorcss.view5, {width:'50%'}]}>
-                            <FontAwesomeIcon icon={faStar} style={[doctorcss.icon4, {marginLeft:'5%', marginRight:'-9%'}]} size={20} />
+                        <View style={[doctorcss.view5, { width: '50%' }]}>
+                            <FontAwesomeIcon icon={faStar} style={[doctorcss.icon4, { marginLeft: '5%', marginRight: '-9%' }]} size={20} />
                             <Text style={doctorcss.text7}>{data.detail.star}</Text>
                         </View>
                         <View style={doctorcss.view6}>
@@ -133,7 +138,7 @@ const DoctorDetail = ({ navigation }: any) => {
                         style={[
                             doctorcss.datetouc,
                             selectedDay === index ? { backgroundColor: '#199A8E' } : null,
-                            // index === currentDate.getDay() ? null : { borderColor: 'red' }, 
+                            index >= currentDate.getDay() ? null : { borderColor: 'red' },
 
                         ]}
                         onPress={() => {
@@ -143,9 +148,9 @@ const DoctorDetail = ({ navigation }: any) => {
                         }}
                     >
                         <Text style={doctorcss.text5}>
-                            {dayInfo.dayName.slice(0, 3)}       {dayInfo.dayOfMonth}  
-                        </Text>                   
-                         </TouchableOpacity>
+                            {dayInfo.dayName.slice(0, 3)}       {dayInfo.dayOfMonth}
+                        </Text>
+                    </TouchableOpacity>
                 ))}
             </ScrollView>
             <View style={doctorcss.view8}></View>
@@ -163,7 +168,9 @@ const DoctorDetail = ({ navigation }: any) => {
                     <FontAwesomeIcon icon={faCommentDots} style={doctorcss.icon1} size={35} />
                 </TouchableOpacity>
                 <TouchableOpacity style={doctorcss.touc2} onPress={() => handleclick(data)}>
-                    <Text style={doctorcss.text10}>Book Apointment</Text>
+                    {loading ? (
+                        <ActivityIndicator size='large' color="white" style={{ marginTop: '5%' }} />
+                    ) : (<Text style={doctorcss.text10}>Book Apointment</Text>)}
                 </TouchableOpacity>
             </View>
         </View>

@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const initialStateValue = [
     {
         id: 1,
@@ -127,6 +129,9 @@ export const doctorSlice = createSlice({
     reducers: {
         doctoraction: (state, action) => {
             state.value = action.payload
+            AsyncStorage.setItem('doctorData', JSON.stringify(action.payload))
+            .then(() => console.log('Data saved to AsyncStorage'))
+            .catch((error) => console.error('Error saving data: ', error));
         }
     }
 })

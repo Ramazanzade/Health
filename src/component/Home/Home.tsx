@@ -13,13 +13,19 @@ const Home = ({ navigation }: any) => {
     const item1 = useSelector((state: any) => state.reclamReducer.value)
     const data = useSelector((state: any) => state.doctorReducer.value)
     const items = useSelector((state: any) => state.dermanproductReducer.value)
+    const dispatch = useDispatch()
 
-    const dispatch = useDispatch()  
-    const [localData, setLocalData] = useState([]); // Local state for the fetched data
     useEffect(() => {
-        dispatch(doctoraction(data));
-        setLocalData(data)
-      }, [data]);
+        AsyncStorage.getItem('doctorData')
+          .then((data) => {
+            if (data) {
+              const parsedData = JSON.parse(data);
+              dispatch(doctoraction(parsedData));
+            }
+          })
+          .catch((error) => console.error('Error loading data: ', error));
+      }, [dispatch]);
+    
     const handleprees = (data: any) => {
         dispatch(doctoraction(data));
         navigation.navigate('DoctorScreen', { screen: 'DoctorDetail' })
@@ -28,46 +34,46 @@ const Home = ({ navigation }: any) => {
         dispatch(doctoraction(items));
         navigation.navigate('DermanScreen', { screen: 'Arcticles' })
     }
-    const renderItem5=(data:any)=>{
-        return(
+    const renderItem5 = (data: any) => {
+        return (
             <TouchableOpacity style={homecss.touc2} onPress={() => handleprees(data)}>
-                            <View style={homecss.view5}>
-                                <Image
-                                    source={data.detail.imge}
-                                    style={homecss.imge}
-                                />
-                            </View>
-                            <View style={homecss.view6}>
-                                <Text style={homecss.text5}>{data.detail.name}</Text>
-                                <Text style={homecss.text6}>{data.category}</Text>
-                            </View>
-                            <View style={homecss.view7}>
-                                <View style={homecss.view8}>
-                                    <FontAwesomeIcon icon={faStar} style={homecss.icon4} size={10} />
-                                    <Text style={homecss.text7}>{data.detail.star}</Text>
-                                </View>
-                                <View style={homecss.view9}>
-                                    <FontAwesomeIcon icon={faLocationDot} style={homecss.icon5} size={10} />
-                                    <Text style={homecss.text8}>{data.detail.loction}</Text>
-                                </View>
-                            </View>
-                        </TouchableOpacity>
+                <View style={homecss.view5}>
+                    <Image
+                        source={data.detail.imge}
+                        style={homecss.imge}
+                    />
+                </View>
+                <View style={homecss.view6}>
+                    <Text style={homecss.text5}>{data.detail.name}</Text>
+                    <Text style={homecss.text6}>{data.category}</Text>
+                </View>
+                <View style={homecss.view7}>
+                    <View style={homecss.view8}>
+                        <FontAwesomeIcon icon={faStar} style={homecss.icon4} size={10} />
+                        <Text style={homecss.text7}>{data.detail.star}</Text>
+                    </View>
+                    <View style={homecss.view9}>
+                        <FontAwesomeIcon icon={faLocationDot} style={homecss.icon5} size={10} />
+                        <Text style={homecss.text8}>{data.detail.loction}</Text>
+                    </View>
+                </View>
+            </TouchableOpacity>
         )
     }
-    const renderItem4=(items:any)=>{
-        return(
+    const renderItem4 = (items: any) => {
+        return (
             <TouchableOpacity style={homecss.touc3} onPress={() => handleprees1(items)}>
-            <View style={homecss.view11}>
-                <Image
-                    source={items.imge}
-                    style={homecss.img1}
-                />
-            </View>
-            <View style={homecss.view12}>
-                <Text style={homecss.text11}>{items.name}</Text>
-                <Text style={homecss.text12}>{items.price} - <Text style={homecss.text13}>{items.red}</Text></Text>
-            </View>
-        </TouchableOpacity>
+                <View style={homecss.view11}>
+                    <Image
+                        source={items.imge}
+                        style={homecss.img1}
+                    />
+                </View>
+                <View style={homecss.view12}>
+                    <Text style={homecss.text11}>{items.name}</Text>
+                    <Text style={homecss.text12}>{items.price} - <Text style={homecss.text13}>{items.red}</Text></Text>
+                </View>
+            </TouchableOpacity>
         )
     }
     return (
@@ -101,7 +107,7 @@ const Home = ({ navigation }: any) => {
                     <Text style={homecss.text1}>Pharmacy</Text>
                 </View>
                 <View>
-                    <TouchableOpacity style={homecss.touc}>
+                    <TouchableOpacity style={homecss.touc} onPress={() => navigation.navigate('DermanScreen', { screen: 'Arcticles' })}>
                         <FontAwesomeIcon icon={faNewspaper} style={homecss.icon3} size={40} />
                     </TouchableOpacity>
                     <Text style={homecss.text1}>News</Text>
@@ -146,7 +152,7 @@ const Home = ({ navigation }: any) => {
                 </View>
                 <FlatList
                     data={data}
-                    renderItem={({ item }) =>renderItem5(item)}
+                    renderItem={({ item }) => renderItem5(item)}
                     keyExtractor={(item: any) => item.id.toString()}
                     horizontal={true}
                 />
@@ -160,7 +166,7 @@ const Home = ({ navigation }: any) => {
                 </View>
                 <FlatList
                     data={items}
-                    renderItem={({ item }) =>renderItem4(item)}
+                    renderItem={({ item }) => renderItem4(item)}
                     keyExtractor={(item: any) => item.id.toString()}
                     style={homecss.flatlist1}
                 />

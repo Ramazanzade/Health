@@ -21,9 +21,10 @@ const Pharmacy = ({ navigation }: any) => {
     navigation.navigate('DrugsDetail')
   }
   const handle =(item2:any)=>{
-    dispatch(toggleFavorite(item2.id))
-    console.log('salam', dispatch);
-    
+    dispatch(toggleFavorite(item2.id))    
+  }
+  const handle1 =(item2:any)=>{
+    dispatch(toggleFavorite(item2.id))    
   }
   const renderItem1 = (item2: any) => {
     return (
@@ -70,8 +71,13 @@ const Pharmacy = ({ navigation }: any) => {
         </View>
         <View style={dermancss.view2}>
           <Text style={dermancss.text11}>${item2.price}</Text>
-          <TouchableOpacity style={dermancss.touc3}>
-            <FontAwesomeIcon icon={faPlus} style={[doctorcss.icon, { marginLeft: '12%' }]} color='#ffffff' size={20} />
+          <TouchableOpacity style={dermancss.touc3} onPress={() =>handle1(item2)}>
+            <FontAwesomeIcon
+              icon={item2.isFavorite ? faCheck : faPlus}
+              style={[doctorcss.icon, { marginLeft: '12%' }]}
+              color='#ffffff'
+              size={20}
+            />
           </TouchableOpacity>
         </View>
       </View>

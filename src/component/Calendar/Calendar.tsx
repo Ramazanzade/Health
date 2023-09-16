@@ -3,24 +3,18 @@ import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronLeft, faMagnifyingGlass, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
 import doctorcss from '../Doctor/doctorcss';
-import { useSelector, useDispatch } from 'react-redux'; 
+import { useSelector, useDispatch } from 'react-redux';
 import dermancss from '../Derman/dermancss'
 import { dermanaction } from '../../store/feature/dermanSlice';
 
-const Calendar = ({navigation}:any) => {
-  const favoriteItems = useSelector((state:any) =>
-    state.dermanReducer.value.filter((item:any) => item.isFavorite)
+const Calendar = ({ navigation }: any) => {
+  const favoriteItems = useSelector((state: any) =>
+    state.dermanReducer.value.filter((item: any) => item.isFavorite)
   );
-  const item2 = useSelector((state: any) => state.dermanReducer.value)
-  const dispatch = useDispatch()
-  const handlepres = (item2: any) => {
-    dispatch(dermanaction(item2));
-    navigation.navigate('DermanScreen',{screen:'DrugsDetail'})
-  }
   const renderItem1 = (favoriteItems: any) => {
     return (
       <View style={dermancss.view}>
-        <TouchableOpacity style={dermancss.touc2} onPress={()=>handlepres(item2)}>
+        <TouchableOpacity style={dermancss.touc2}>
           <Image
             source={favoriteItems.imge}
             style={dermancss.imge2}
@@ -46,6 +40,8 @@ const Calendar = ({navigation}:any) => {
   }
   return (
     <View style={{ backgroundColor: '#ffffff', flex: 1 }}>
+      <Text style={{ margin: '5%', fontSize: 30, color: '#000000' }} >Favorite</Text>
+      <Text style={{ margin: '5%', fontSize: 25 }}>Pharmacy</Text>
       <FlatList
         data={favoriteItems}
         renderItem={({ item }) => renderItem1(item)}

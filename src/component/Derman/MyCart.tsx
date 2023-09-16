@@ -199,7 +199,7 @@ const MyCart = ({ navigation, initialQuantity }: any) => {
             <TouchableOpacity style={loginstayle.touc3} onPress={closeSuccessModal}>
               {loading1 ? (
                 <ActivityIndicator size='small' color="white" style={{ marginTop: '10%' }} />
-              ) : (<Text style={loginstayle.text9}>Chat Doctor</Text>)}
+              ) : (<Text style={loginstayle.text9}>Home</Text>)}
 
             </TouchableOpacity>
           </View>

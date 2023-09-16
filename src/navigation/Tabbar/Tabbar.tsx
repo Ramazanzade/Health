@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEarthOceania, faHome, faBasketShopping } from '@fortawesome/free-solid-svg-icons';
-import { faUser, faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faUser, faEnvelope, faBookmark } from '@fortawesome/free-regular-svg-icons';
 import HomeScreen from '../Stack/HomeStack/HomeScreen';
 import MessageScreen from '../Stack/MessageStack/MessageScreen';
 import CalendarScreen from '../Stack/CalendarStack/CalendarScreen';
@@ -31,7 +31,7 @@ const Tabbar = ({ route }: any) => {
           } else if (route.name === 'MessageScreen') {
             iconName = faEnvelope;
           } else if (route.name === 'CalendarScreen') {
-            iconName = faBasketShopping;
+            iconName = faBookmark;
           } else if (route.name === 'LocationScreen') {
             iconName = faUser;
           }
