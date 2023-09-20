@@ -20,8 +20,8 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="SplasScreen" component={SplasScreen} />   
-      <Stack.Screen name="OnboardinScreen" component={OnboardinScreen} /> 
+        {/* <Stack.Screen name="SplasScreen" component={SplasScreen} />    */}
+      {/* <Stack.Screen name="OnboardinScreen" component={OnboardinScreen} />  */}
       {/* <Stack.Screen name="LoginScreen" component={LoginScreen} />    */}
       {/* <Stack.Screen name="RegisterScreen" component={RegisterScreen} />   */}
         <Stack.Screen name="Tabbar" component={Tabbar} />
