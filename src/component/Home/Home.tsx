@@ -169,54 +169,5 @@ const Home = ({ navigation }: any) => {
 export default Home
 
 
-// import React from 'react';
-// import { View, Text } from 'react-native';
-// import { Svg, Circle, G, Path } from 'react-native-svg';
-
-// const data = [10, 20, 30]; // Replace this with your API data
-
-// const Chart = ({ data }:any) => {
-//   const total = data.reduce((acc:any, value:any) => acc + value, 0);
-//   const colors = ['blue', 'green', 'red']; // Define colors for the parts
-
-//   let startAngle = 0;
-//   const chartParts = data.map((value:any, index:any) => {
-//     const angle = (value / total) * 360;
-//     const endAngle = startAngle + angle;
-//     const color = colors[index];
-
-//     const path = `
-//       M50,50 L50,0
-//       A50,50 0 ${angle > 180 ? 1 : 0},1 
-//       ${Math.cos((endAngle * Math.PI) / 180) * 50 + 50},
-//       ${Math.sin((endAngle * Math.PI) / 180) * 50 + 50}
-//       Z
-//     `;
-
-//     startAngle = endAngle;
-
-//     return <Path key={index} d={path} fill={color} />;
-//   });
-
-//   return (
-//     <Svg width={100} height={100}>
-//       <G transform="rotate(-90 50 50)">
-//         {chartParts}
-//         <Circle cx={50} cy={50} r={40} fill="white" />
-//       </G>
-//     </Svg>
-//   );
-// };
-
-// const Home = () => {
-//   return (
-//     <View>
-//       <Text>Home</Text>
-//       <Chart data={data} />
-//     </View>
-//   );
-// };
-
-// export default Home;
 
   
